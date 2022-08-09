@@ -5,12 +5,13 @@
 @layer components {
   .box-container {
     /* w-[80%] sm:w-[60%] lg:w-[50%]  */
-    @apply max-w-screen-xl mx-auto
-       overflow-hidden
-      w-[100%] h-screen;
+    @apply max-w-screen-lg h-[98vh]
+      overflow-hidden
+      rounded-md
+      mx-auto mt-2;
   }
   .box-header {
-    @apply bg-[#39393b] h-10  pr-2 leading-10
+    @apply bg-header h-10  pr-2 leading-10
       flex;
   }
   .circle-container {
@@ -24,7 +25,12 @@
     @apply rounded-full h-3 w-3 ml-2;
   }
   .box-body {
-    @apply text-white 
-      bg-[#2e333f] h-screen overflow-auto;
+    @apply text-white font-['monaco']
+      bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md;
+  }
+  /* 命令输入框 */
+  .command-input {
+    @apply bg-body outline-none  w-screen ml-2
+    text-green-400 caret-white text-xl border-none pb-1;
   }
 }
