@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .box-container {
+    /* w-[80%] sm:w-[60%] lg:w-[50%]  */
+    @apply max-w-screen-xl mx-auto
+       overflow-hidden
+      w-[100%] h-screen;
+  }
+  .box-header {
+    @apply bg-[#39393b] h-10  pr-2 leading-10
+      flex;
+  }
+  .circle-container {
+    @apply flex flex-row items-center justify-center;
+  }
+  .center-dir-title {
+    @apply flex-1 text-center flex items-center justify-center
+      text-white text-xl;
+  }
+  .circle {
+    @apply rounded-full h-3 w-3 ml-2;
+  }
+  .box-body {
+    @apply text-white 
+      bg-[#2e333f] h-screen overflow-auto;
+  }
+}

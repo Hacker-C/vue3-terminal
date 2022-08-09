@@ -1,3 +1,3 @@
 <template>
-  <TBox />
+  <TermContainer />
 </template>
