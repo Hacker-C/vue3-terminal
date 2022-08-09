@@ -7,6 +7,9 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    TBox: typeof import('./src/components/TBox.vue')['default']
+    TBox: typeof import('./src/components/TermContainer.vue')['default']
+    TermBody: typeof import('./src/components/TermBody.vue')['default']
+    TermContainer: typeof import('./src/components/TermContainer.vue')['default']
+    TermHeader: typeof import('./src/components/TermHeader.vue')['default']
   }
 }

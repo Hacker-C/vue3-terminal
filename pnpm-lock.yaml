@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@iconify/vue': ^3.2.1
   '@rushstack/eslint-patch': ^1.1.0
   '@types/node': ^16.11.45
   '@vitejs/plugin-vue': ^3.0.1
@@ -25,6 +26,7 @@ dependencies:
   vue: 3.2.37
 
 devDependencies:
+  '@iconify/vue': 3.2.1_vue@3.2.37
   '@rushstack/eslint-patch': 1.1.4
   '@types/node': 16.11.47
   '@vitejs/plugin-vue': 3.0.1_vite@3.0.4+vue@3.2.37
@@ -116,6 +118,14 @@ packages:
 
   /@humanwhocodes/object-schema/1.2.1:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+    dev: true
+
+  /@iconify/vue/3.2.1_vue@3.2.37:
+    resolution: {integrity: sha512-c4R6ZgFo1JrJ8aPMMgOPgfU7lBswihMGR+yWe/P4ZukC3kTkeT4+lkt9Pc/itVFMkwva/S/7u9YofmYv57fnNQ==}
+    peerDependencies:
+      vue: 3.x
+    dependencies:
+      vue: 3.2.37
     dev: true
 
   /@nodelib/fs.scandir/2.1.5:
