@@ -26,7 +26,7 @@
   }
   .box-body {
     @apply text-white font-['monaco']
-      bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md;
+      bg-body h-[90vh] pb-3 overflow-auto rounded-bl-md rounded-br-md;
   }
   /* 命令输入框 */
   .command-input {
