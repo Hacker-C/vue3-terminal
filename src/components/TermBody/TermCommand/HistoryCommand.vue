@@ -10,6 +10,7 @@ const command = showCommands[showCommands.length - 1]
 defineExpose<{
   command?: string
 }>()
+const isMessageShow = ref(true)
 const type = computed(() => {
   if (isValidCommand(command)) {
     if (['ls', 'pwd'].includes(command.split(' ')[0])) {
@@ -17,6 +18,10 @@ const type = computed(() => {
     }
     return 'success'
   } else {
+    if (command === '') {
+      isMessageShow.value = false
+      return 'none'
+    }
     return 'error'
   }
 })
@@ -30,14 +35,14 @@ const type = computed(() => {
     <template #history-command>
       <div
         class="pl-5"
-        :class="isValidCommand(command!) ?'text-green-500': 'text-red-500' "
+        :class="isValidCommand(command!) ?'text-green-500': 'text-red-500'"
       >
         {{ command }}
       </div>
     </template>
     <template #show-area>
       <div class="flex items-center">
-        <TermMessage :type="type">{{ type }}</TermMessage>
+        <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
         <div v-if="command === 'pwd'">{{ currentFullPath }}</div>
         <div v-else-if="command === 'ls'">
           <span>{{ filesAndDirectories[0] }}</span>

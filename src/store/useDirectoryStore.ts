@@ -115,7 +115,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   // 模拟 pwd
   const pwd = () => {
     setHistoryPath()
-    addShowCommand('pwd')
+    // addShowCommand('pwd')
   }
 
   // 模拟 mkdir dirName
@@ -125,7 +125,7 @@ export const useDirectoryStore = defineStore('directory', () => {
       (dir) => dir.name === dirName
     )
     if (targetDirIndex !== -1) {
-      addShowCommand('mkdir')
+      // addShowCommand('mkdir')
       return 1 // 存在同名文件夹，操作失败
     }
     dir.value.directories.push({
@@ -135,7 +135,7 @@ export const useDirectoryStore = defineStore('directory', () => {
       previous: dir.value,
       directories: []
     })
-    addShowCommand('mkdir ' + dirName)
+    // addShowCommand('mkdir ' + dirName)
     return 0 // 操作成功
   }
 
@@ -146,11 +146,11 @@ export const useDirectoryStore = defineStore('directory', () => {
       (file) => file === fileName
     )
     if (targetFileIndex !== -1) {
-      addShowCommand('touch')
+      // addShowCommand('touch')
       return 1 // 存在同名文件，操作失败
     }
     dir.value.files.push(fileName)
-    addShowCommand('touch ' + fileName)
+    // addShowCommand('touch ' + fileName)
     return 0 // 操作成功
   }
 
@@ -164,7 +164,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   })
   const ls = () => {
     setHistoryPath()
-    addShowCommand('ls')
+    // addShowCommand('ls')
   }
 
   return {

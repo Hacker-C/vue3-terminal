@@ -13,30 +13,28 @@ const execute = () => {
       break
     case 'clear':
       isWelcomeShow.value = false
-      directory.clearShowCommands()
-      return void (commandInput.value = '')
+      commandInput.value = ''
+      return void directory.clearShowCommands()
     case 'pwd':
       directory.pwd()
-      return void (commandInput.value = '')
+      break
     case 'ls':
       directory.ls()
-      return void (commandInput.value = '')
+      break
     case 'mkdir':
       directory.mkdir(param)
-      return void (commandInput.value = '')
+      break
     case 'touch':
       directory.touch(param)
-      return void (commandInput.value = '')
+      break
     case 'welecome':
-      directory.addShowCommand(commandInput.value)
-      return void (commandInput.value = '')
     case 'help':
-      directory.addShowCommand(commandInput.value)
-      return void (commandInput.value = '')
+      break
     default:
       directory.setHistoryPath()
   }
   directory.addShowCommand(commandInput.value)
+  start = directory.showCommands.length - 1
   commandInput.value = ''
 }
 
@@ -48,6 +46,28 @@ onMounted(() => {
     ;(termBody.value as HTMLElement).scrollIntoView(false)
   })
 })
+
+// 实现上下键 pageup pagedown 点击切换历史命令
+let start = 0
+const goToHistoryCommand = (keyName: string) => {
+  if (directory.showCommands.length === 0) {
+    return
+  }
+  if (start < 0 || start > directory.showCommands.length - 1) {
+    start = directory.showCommands.length - 1
+  }
+  if (keyName === 'ArrowUp') {
+    commandInput.value = directory.showCommands[start--]
+  } else {
+    commandInput.value = directory.showCommands[start++]
+  }
+}
+useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
+  if (['ArrowDown', 'ArrowUp'].includes(e.key)) {
+    goToHistoryCommand(e.key)
+  }
+  // eslint-disable-next-line no-undef
+}) as EventListener)
 </script>
 
 <template>
