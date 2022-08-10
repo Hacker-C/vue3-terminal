@@ -51,7 +51,7 @@ export const useDirectoryStore = defineStore('directory', () => {
   })
 
   // NOTE 合法指令（已经完成的指令）
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch']
 
   // 是否合法的命令
   const isValidCommand = (command: string) => {
@@ -119,7 +119,22 @@ export const useDirectoryStore = defineStore('directory', () => {
       previous: dir.value,
       directories: []
     })
-    addShowCommand('mkdir')
+    addShowCommand('mkdir ' + dirName)
+    return 0 // 操作成功
+  }
+
+  // 模拟 touch fileName
+  const touch = (fileName: string) => {
+    setHistoryPath(currentFullPath.value)
+    const targetFileIndex = dir.value.files.findIndex(
+      (file) => file === fileName
+    )
+    if (targetFileIndex !== -1) {
+      addShowCommand('touch')
+      return 1 // 存在同名文件，操作失败
+    }
+    dir.value.files.push(fileName)
+    addShowCommand('touch ' + fileName)
     return 0 // 操作成功
   }
 
@@ -148,6 +163,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     filesAndDirectories,
     ls,
     isValidCommand,
-    mkdir
+    mkdir,
+    touch
   }
 })

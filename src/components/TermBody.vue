@@ -22,6 +22,9 @@ const execute = () => {
     case 'mkdir':
       directory.mkdir(param)
       return void (commandInput.value = '')
+    case 'touch':
+      directory.touch(param)
+      return void (commandInput.value = '')
   }
   directory.addShowCommand(commandInput.value)
   commandInput.value = ''
