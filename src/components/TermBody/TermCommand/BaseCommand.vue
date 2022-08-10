@@ -6,6 +6,10 @@ defineProps<Props>()
 </script>
 
 <template>
+  <!-- 
+      基础组件：BaseCommand
+      InputCommand 和 HistoryCommand 基于本组件
+  -->
   <div class="pt-2 pl-2 pr-2 text-lg">
     <div class="text-[#00afff] flex items-center">
       <Icon icon="bi:apple" class="mr-2 mb-1" />

@@ -44,6 +44,7 @@ onMounted(() => {
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
+      <!-- 历史命令区域 HistoryCommand -->
       <HistoryCommand
         v-for="value of directory.showCommands"
         :key="value"
@@ -53,6 +54,7 @@ onMounted(() => {
           <div class="command-input">{{ value }}</div>
         </template>
       </HistoryCommand>
+      <!-- 命令输入框区域 InputCommand -->
       <InputCommand
         ref="inputCommandRef"
         v-model="commandInput"

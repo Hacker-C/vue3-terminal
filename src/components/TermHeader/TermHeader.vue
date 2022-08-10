@@ -1,4 +1,5 @@
 <template>
+  <!-- 终端顶部区域 -->
   <header class="box-header">
     <div class="circle-container">
       <span class="circle bg-red-600"></span>

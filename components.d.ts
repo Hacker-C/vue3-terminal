@@ -7,14 +7,14 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
-    BaseCommand: typeof import('./src/components/TermCommand/BaseCommand.vue')['default']
+    BaseCommand: typeof import('./src/components/TermBody/TermCommand/BaseCommand.vue')['default']
     Command: typeof import('./src/components/TermCommand/BaseCommand.vue')['default']
-    HistoryCommand: typeof import('./src/components/TermCommand/HistoryCommand.vue')['default']
-    InputCommand: typeof import('./src/components/TermCommand/InputCommand.vue')['default']
-    TBox: typeof import('./src/components/TermContainer.vue')['default']
-    TermBody: typeof import('./src/components/TermBody.vue')['default']
+    HistoryCommand: typeof import('./src/components/TermBody/TermCommand/HistoryCommand.vue')['default']
+    InputCommand: typeof import('./src/components/TermBody/TermCommand/InputCommand.vue')['default']
+    TBox: typeof import('./src/views/TermContainer.vue')['default']
+    TermBody: typeof import('./src/components/TermBody/TermBody.vue')['default']
     TermCommand: typeof import('./src/components/TermCommand.vue')['default']
-    TermContainer: typeof import('./src/components/TermContainer.vue')['default']
-    TermHeader: typeof import('./src/components/TermHeader.vue')['default']
+    TermContainer: typeof import('./src/views/TermContainer.vue')['default']
+    TermHeader: typeof import('./src/components/TermHeader/TermHeader.vue')['default']
   }
 }
