@@ -31,7 +31,7 @@
   /* 命令输入框 */
   .command-input {
     @apply bg-body outline-none  w-screen ml-3
-    text-green-400 caret-white border-none pb-1;
+      text-red-600 caret-white border-none pb-1;
   }
 }
 

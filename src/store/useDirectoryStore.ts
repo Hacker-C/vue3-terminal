@@ -50,6 +50,14 @@ export const useDirectoryStore = defineStore('directory', () => {
     return path
   })
 
+  // 合法指令（已经完成的指令）
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear']
+
+  // 是否合法的命令
+  const isValidCommand = (command: string) => {
+    return ValidCommands.includes(command)
+  }
+
   // 显示在屏幕上的历史命令
   const showCommands = ref<string[]>([])
   // 清空屏幕
@@ -136,6 +144,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     historyPath,
     pwd,
     filesAndDirectories,
-    ls
+    ls,
+    isValidCommand
   }
 })

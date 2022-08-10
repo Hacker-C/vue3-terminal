@@ -7,7 +7,8 @@ defineProps<Props>()
 
 <template>
   <div class="pt-2 pl-2 pr-2 text-lg">
-    <div class="text-[#00afff]">
+    <div class="text-[#00afff] flex items-center">
+      <Icon icon="bi:apple" class="mr-2 mb-1" />
       <slot name="path"></slot>
     </div>
     <div class="flex items-center">
@@ -20,3 +21,7 @@ defineProps<Props>()
     </slot>
   </div>
 </template>
+
+<script lang="ts">
+import { Icon } from '@iconify/vue'
+</script>

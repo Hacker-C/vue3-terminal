@@ -5,6 +5,7 @@ interface Props {
 }
 
 const { currentFullPath } = storeToRefs(useDirectoryStore())
+const { isValidCommand } = useDirectoryStore()
 
 // 设置默认值
 // eslint-disable-next-line vue/no-setup-props-destructure
@@ -36,6 +37,7 @@ const emits = defineEmits(['update:modelValue'])
         v-if="isInput"
         type="text"
         class="command-input"
+        :class="{ 'text-green-400': isValidCommand(modelValue!.split(' ')[0]) }"
         v-focus
         ref="commandInputRef"
         :value="modelValue"
