@@ -55,7 +55,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 是否合法的命令
   const isValidCommand = (command: string) => {
-    return ValidCommands.includes(command)
+    return ValidCommands.includes(command.split(' ')[0])
   }
 
   // 显示在屏幕上的历史命令

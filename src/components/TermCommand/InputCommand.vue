@@ -37,7 +37,7 @@ const emits = defineEmits(['update:modelValue'])
         v-if="isInput"
         type="text"
         class="command-input"
-        :class="{ 'text-green-400': isValidCommand(modelValue!.split(' ')[0]) }"
+        :class="{ 'text-green-400': isValidCommand(modelValue!) }"
         v-focus
         ref="commandInputRef"
         :value="modelValue"

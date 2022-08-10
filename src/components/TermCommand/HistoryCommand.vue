@@ -1,6 +1,11 @@
 <script setup lang="ts">
-const { historyPath, showCommands, currentFullPath, filesAndDirectories } =
-  useDirectoryStore()
+const {
+  historyPath,
+  showCommands,
+  currentFullPath,
+  filesAndDirectories,
+  isValidCommand
+} = useDirectoryStore()
 const command = showCommands[showCommands.length - 1]
 defineExpose<{
   command?: string
@@ -13,7 +18,12 @@ defineExpose<{
       <div>{{ historyPath }}</div>
     </template>
     <template #history-command>
-      <div class="text-green-500 ml-3">{{ command }}</div>
+      <div
+        class="ml-3"
+        :class="isValidCommand(command!) ?'text-green-500': 'text-red-500' "
+      >
+        {{ command }}
+      </div>
     </template>
     <template #show-area>
       <div v-if="command === 'pwd'">{{ currentFullPath }}</div>
