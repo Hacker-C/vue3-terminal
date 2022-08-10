@@ -15,5 +15,5 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-const { currentDirName } = useDirectoryStore()
+const { currentDirName } = storeToRefs(useDirectoryStore())
 </script>

@@ -3,7 +3,9 @@ interface Props {
   isInput?: boolean
   modelValue?: string
 }
-const { currentFullPath } = useDirectoryStore()
+
+const { currentFullPath } = storeToRefs(useDirectoryStore())
+
 // 设置默认值
 // eslint-disable-next-line vue/no-setup-props-destructure
 const { isInput = false } = defineProps<Props>()
@@ -15,7 +17,7 @@ const VFocus = {
   }
 }
 
-// 一旦按下键盘，自动聚焦到输入框
+// 一旦按下键盘，自动聚焦到输入
 const commandInputRef = ref<HTMLInputElement | null>(null)
 watchEffect(() => {
   useGlobalFocus(commandInputRef)

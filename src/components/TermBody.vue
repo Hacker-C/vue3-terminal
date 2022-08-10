@@ -5,13 +5,17 @@ const execute = () => {
   const [simpleCommand, param] = commandInput.value.split(' ')
   switch (simpleCommand) {
     case 'cd':
-      console.log(directory)
-      directory.cd(param)
+      if (param === '..') {
+        directory.cdBack()
+      } else {
+        directory.cd(param)
+      }
       break
     case 'clear':
-      return void directory.clearShowCommands()
+      directory.clearShowCommands()
+      return void (commandInput.value = '')
   }
-  directory.showCommands.push(commandInput.value)
+  directory.addShowCommand(commandInput.value)
   commandInput.value = ''
 }
 
@@ -20,7 +24,7 @@ const termBody = ref<HTMLElement | null>(null)
 onMounted(() => {
   watch(directory.showCommands, async () => {
     await nextTick()
-    ~(termBody.value as HTMLElement).scrollIntoView(false)
+    ;(termBody.value as HTMLElement).scrollIntoView(false)
   })
 })
 </script>

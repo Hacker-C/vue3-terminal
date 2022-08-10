@@ -8,7 +8,7 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     BaseCommand: typeof import('./src/components/TermCommand/BaseCommand.vue')['default']
-    Command: typeof import('./src/components/TermCommand/Command.vue')['default']
+    Command: typeof import('./src/components/TermCommand/BaseCommand.vue')['default']
     HistoryCommand: typeof import('./src/components/TermCommand/HistoryCommand.vue')['default']
     InputCommand: typeof import('./src/components/TermCommand/InputCommand.vue')['default']
     TBox: typeof import('./src/components/TermContainer.vue')['default']
