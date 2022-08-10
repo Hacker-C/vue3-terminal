@@ -49,15 +49,19 @@ export const useDirectoryStore = defineStore('directory', () => {
     }
     return path
   })
+
   // 显示在屏幕上的历史命令
   const showCommands = ref<string[]>([])
+  // 清空屏幕
   const clearShowCommands = () => {
     showCommands.value.splice(0, showCommands.value.length)
   }
+  // 添加历史命令
   const addShowCommand = (command: string) => {
     showCommands.value.push(command)
   }
 
+  // 维护一个固定的上一次历史命令
   const historyPath = ref('/')
 
   // 模拟 cd dir
@@ -72,6 +76,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     dir.value = dir.value.directories[targetDirIndex]
     return 0 // 操作成功
   }
+
   // 模拟 cd ..
   const cdBack = () => {
     historyPath.value = currentFullPath.value
@@ -79,6 +84,13 @@ export const useDirectoryStore = defineStore('directory', () => {
       dir.value = dir.value.previous
     }
   }
+
+  // 模拟 pwd
+  const pwd = () => {
+    historyPath.value = currentFullPath.value
+    addShowCommand('pwd')
+  }
+
   return {
     dir,
     cd,
@@ -88,6 +100,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     clearShowCommands,
     addShowCommand,
     currentFullPath,
-    historyPath
+    historyPath,
+    pwd
   }
 })

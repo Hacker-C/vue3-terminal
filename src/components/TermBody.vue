@@ -14,6 +14,9 @@ const execute = () => {
     case 'clear':
       directory.clearShowCommands()
       return void (commandInput.value = '')
+    case 'pwd':
+      directory.pwd()
+      return void (commandInput.value = '')
   }
   directory.addShowCommand(commandInput.value)
   commandInput.value = ''
@@ -31,7 +34,11 @@ onMounted(() => {
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
-      <HistoryCommand v-for="value of directory.showCommands" :key="value">
+      <HistoryCommand
+        v-for="value of directory.showCommands"
+        :key="value"
+        :command="value"
+      >
         <template #history-command>
           <div class="command-input">{{ value }}</div>
         </template>

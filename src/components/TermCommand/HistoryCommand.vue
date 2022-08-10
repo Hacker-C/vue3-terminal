@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const { historyPath, showCommands } = useDirectoryStore()
+const { historyPath, showCommands, currentFullPath } = useDirectoryStore()
 const command = showCommands[showCommands.length - 1]
+defineExpose<{
+  command?: string
+}>()
 </script>
 
 <template>
@@ -12,7 +15,7 @@ const command = showCommands[showCommands.length - 1]
       <div class="text-green-500 ml-3">{{ command }}</div>
     </template>
     <template #show-area>
-      <div>show area</div>
+      <div v-if="command === 'pwd'">{{ currentFullPath }}</div>
     </template>
   </BaseCommand>
 </template>
