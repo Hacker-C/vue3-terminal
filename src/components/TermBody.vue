@@ -19,6 +19,9 @@ const execute = () => {
     case 'ls':
       directory.ls()
       return void (commandInput.value = '')
+    case 'mkdir':
+      directory.mkdir(param)
+      return void (commandInput.value = '')
   }
   directory.addShowCommand(commandInput.value)
   commandInput.value = ''

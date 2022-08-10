@@ -50,8 +50,8 @@ export const useDirectoryStore = defineStore('directory', () => {
     return path
   })
 
-  // 合法指令（已经完成的指令）
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear']
+  // NOTE 合法指令（已经完成的指令）
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir']
 
   // 是否合法的命令
   const isValidCommand = (command: string) => {
@@ -103,13 +103,14 @@ export const useDirectoryStore = defineStore('directory', () => {
   }
 
   // 模拟 mkdir dirName
-  const mkdir = (dirName: string): number => {
+  const mkdir = (dirName: string) => {
     setHistoryPath(currentFullPath.value)
     const targetDirIndex = dir.value.directories.findIndex(
       (dir) => dir.name === dirName
     )
     if (targetDirIndex !== -1) {
-      return 1 // 操作失败
+      addShowCommand('mkdir')
+      return 1 // 存在同名文件夹，操作失败
     }
     dir.value.directories.push({
       id: dir.value.directories.length,
@@ -118,6 +119,7 @@ export const useDirectoryStore = defineStore('directory', () => {
       previous: dir.value,
       directories: []
     })
+    addShowCommand('mkdir')
     return 0 // 操作成功
   }
 
@@ -145,6 +147,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     pwd,
     filesAndDirectories,
     ls,
-    isValidCommand
+    isValidCommand,
+    mkdir
   }
 })
