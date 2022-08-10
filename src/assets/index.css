@@ -31,6 +31,24 @@
   /* 命令输入框 */
   .command-input {
     @apply bg-body outline-none  w-screen ml-2
-    text-green-400 caret-white text-xl border-none pb-1;
+    text-green-400 caret-white border-none pb-1;
+  }
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 14px;
+    height: 20px;
+  }
+  .scrollbar::-webkit-scrollbar-track {
+    background: #2c2c2c;
+  }
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 7px;
+    border: 2px solid #2c2c2c;
+  }
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #9f9f9f;
   }
 }
