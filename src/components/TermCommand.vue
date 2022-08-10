@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import useGlobalFocus from '@/hooks/useGlobalFocus'
-
 interface Props {
   curDir: string
   isInput?: boolean
@@ -15,13 +13,10 @@ const VFocus = {
   }
 }
 
+// 一旦按下键盘，自动聚焦到输入框
 const commandInputRef = ref<HTMLInputElement | null>(null)
 watchEffect(() => {
   useGlobalFocus(commandInputRef)
-})
-
-defineExpose({
-  commandInputRef
 })
 </script>
 

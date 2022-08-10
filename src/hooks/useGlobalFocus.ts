@@ -1,4 +1,3 @@
-import useAddEventListener from './useAddEventListener'
 import type { Ref } from 'vue'
 
 export default function (el: Ref<HTMLElement | null>) {
@@ -7,4 +6,5 @@ export default function (el: Ref<HTMLElement | null>) {
       el.value.focus()
     }
   })
+  ref()
 }
