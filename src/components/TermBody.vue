@@ -25,6 +25,8 @@ const execute = () => {
     case 'touch':
       directory.touch(param)
       return void (commandInput.value = '')
+    default:
+      directory.setHistoryPath()
   }
   directory.addShowCommand(commandInput.value)
   commandInput.value = ''

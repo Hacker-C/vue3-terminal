@@ -1,4 +1,6 @@
-interface Directory {
+// import { ls, filesAndDirectories } from './ls'
+
+export interface Directory {
   id: number
   name: string
   files: string[]
@@ -71,13 +73,13 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 维护一个固定的上一次历史命令
   const historyPath = ref('/')
-  const setHistoryPath = (path: string) => {
-    historyPath.value = path
+  const setHistoryPath = () => {
+    historyPath.value = currentFullPath.value
   }
 
   // 模拟 cd dir
   const cd = (targetDirName: string): number => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     const targetDirIndex = dir.value.directories.findIndex(
       (dir) => dir.name === targetDirName
     )
@@ -90,7 +92,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 模拟 cd ..
   const cdBack = () => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     if (dir.value.previous) {
       dir.value = dir.value.previous
     }
@@ -98,13 +100,13 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 模拟 pwd
   const pwd = () => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     addShowCommand('pwd')
   }
 
   // 模拟 mkdir dirName
   const mkdir = (dirName: string) => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     const targetDirIndex = dir.value.directories.findIndex(
       (dir) => dir.name === dirName
     )
@@ -125,7 +127,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 模拟 touch fileName
   const touch = (fileName: string) => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     const targetFileIndex = dir.value.files.findIndex(
       (file) => file === fileName
     )
@@ -141,11 +143,13 @@ export const useDirectoryStore = defineStore('directory', () => {
   // 模拟 ls
   const filesAndDirectories = computed(() => {
     const files = dir.value.files.join('\n')
-    const directories = dir.value.directories.map((dir) => dir.name).join('\n')
+    const directories = dir.value.directories
+      .map((curDir) => curDir.name)
+      .join('\n')
     return [files + '\n', directories]
   })
   const ls = () => {
-    setHistoryPath(currentFullPath.value)
+    setHistoryPath()
     addShowCommand('ls')
   }
 
@@ -164,6 +168,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     ls,
     isValidCommand,
     mkdir,
-    touch
+    touch,
+    setHistoryPath
   }
 })
