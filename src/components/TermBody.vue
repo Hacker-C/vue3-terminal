@@ -1,14 +1,24 @@
 <script setup lang="ts">
-const curDir = ref('/home/murphy')
-const count = ref<string[]>(Array(4).fill('aaa'))
-const increment = () => {
-  count.value.push(Math.random() + '')
+const directory = useDirectoryStore()
+const execute = () => {
+  // 仅处理最多两个参数的命令
+  const [simpleCommand, param] = commandInput.value.split(' ')
+  switch (simpleCommand) {
+    case 'cd':
+      console.log(directory)
+      directory.cd(param)
+      break
+    case 'clear':
+      return void directory.clearShowCommands()
+  }
+  directory.showCommands.push(commandInput.value)
+  commandInput.value = ''
 }
 
 const commandInput = ref('')
 const termBody = ref<HTMLElement | null>(null)
 onMounted(() => {
-  watch(count.value, async () => {
+  watch(directory.showCommands, async () => {
     await nextTick()
     ~(termBody.value as HTMLElement).scrollIntoView(false)
   })
@@ -17,19 +27,21 @@ onMounted(() => {
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
-      <TermCommand
-        :curDir="curDir"
-        v-for="value of count"
-        :key="value"
-        :value="value"
-      />
-      <TermCommand
+      <HistoryCommand v-for="value of directory.showCommands" :key="value">
+        <template #history-command>
+          <div class="command-input">{{ value }}</div>
+        </template>
+      </HistoryCommand>
+      <InputCommand
         ref="inputCommandRef"
-        :curDir="curDir"
         v-model="commandInput"
-        @keydown.enter="increment"
+        @keydown.enter="execute"
         :isInput="true"
-      />
+      >
+        <template #show-area>
+          <div></div>
+        </template>
+      </InputCommand>
     </div>
   </main>
 </template>

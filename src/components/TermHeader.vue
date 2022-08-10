@@ -7,7 +7,7 @@
     </div>
     <div class="center-dir-title">
       <Icon icon="ant-design:folder-filled" class="text-[#57c5ff]" />
-      <span class="ml-1">current dir</span>
+      <span class="ml-2">{{ currentDirName }}</span>
     </div>
     <div class="circle-container"></div>
   </header>
@@ -15,4 +15,5 @@
 
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+const { currentDirName } = useDirectoryStore()
 </script>

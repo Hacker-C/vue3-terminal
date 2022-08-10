@@ -1,12 +1,14 @@
 <script setup lang="ts">
 interface Props {
-  curDir: string
   isInput?: boolean
-  value?: string
+  modelValue?: string
 }
+const { currentFullPath } = useDirectoryStore()
+// 设置默认值
 // eslint-disable-next-line vue/no-setup-props-destructure
-const { isInput = false, curDir, value } = defineProps<Props>()
+const { isInput = false } = defineProps<Props>()
 
+// 自定义指令：自动聚焦
 const VFocus = {
   mounted: (el: HTMLInputElement) => {
     el.focus()
@@ -18,22 +20,27 @@ const commandInputRef = ref<HTMLInputElement | null>(null)
 watchEffect(() => {
   useGlobalFocus(commandInputRef)
 })
+
+const emits = defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <div class="pt-2 pl-2 pr-2 text-lg">
-    <div class="text-[#00afff]">{{ curDir }}</div>
-    <div class="flex items-center">
-      <span class="text-lg font-bold text-[#881798]">❯</span>
+  <BaseCommand>
+    <template #path>
+      {{ currentFullPath }}
+    </template>
+    <template #input-area>
       <input
         v-if="isInput"
         type="text"
         class="command-input"
         v-focus
         ref="commandInputRef"
+        :value="modelValue"
+        @input="
+          emits('update:modelValue', ($event.target! as HTMLInputElement).value)
+        "
       />
-      <div class="command-input" v-else>not input</div>
-    </div>
-    <div v-if="!isInput">{{ value }}</div>
-  </div>
+    </template>
+  </BaseCommand>
 </template>
