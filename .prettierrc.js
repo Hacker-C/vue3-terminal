@@ -8,6 +8,5 @@ module.exports = {
   bracketSpacing: true, // key: value 之间的空格
   arrowParens: 'always', // 箭头函数单个参数的情况是否省略括号
   vueIndentScriptAndStyle: false, // vue script和style标签中是否缩进
-  endOfLine: 'lf', // 换行符
-  embeddedLanguageFormatting: 'off' // 引号中的代码是否格式化
+  endOfLine: 'lf' // 换行符
 }
