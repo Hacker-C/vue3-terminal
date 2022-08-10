@@ -20,7 +20,7 @@ export default defineConfig({
         /\.md$/ // .md
       ],
       imports: ['vue', 'pinia'], // 自动引入外部 api
-      dirs: ['./src/hooks'], // 自动引入 hooks
+      dirs: ['./src/hooks', './src/store'], // 自动引入 hooks
       dts: './auto-imports.d.ts',
       // eslint报错解决
       eslintrc: {

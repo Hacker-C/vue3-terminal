@@ -60,6 +60,7 @@ declare global {
   const useAttrs: typeof import('vue')['useAttrs']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDirectoryStore: typeof import('./src/store/useDirectoryStore')['useDirectoryStore']
   const useGlobalFocus: typeof import('./src/hooks/useGlobalFocus')['default']
   const useSlots: typeof import('vue')['useSlots']
   const watch: typeof import('vue')['watch']

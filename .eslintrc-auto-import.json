@@ -59,6 +59,7 @@
     "useAttrs": true,
     "useCssModule": true,
     "useCssVars": true,
+    "useDirectoryStore": true,
     "useGlobalFocus": true,
     "useSlots": true,
     "watch": true,
