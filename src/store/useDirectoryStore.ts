@@ -63,10 +63,13 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 维护一个固定的上一次历史命令
   const historyPath = ref('/')
+  const setHistoryPath = (path: string) => {
+    historyPath.value = path
+  }
 
   // 模拟 cd dir
   const cd = (targetDirName: string): number => {
-    historyPath.value = currentFullPath.value
+    setHistoryPath(currentFullPath.value)
     const targetDirIndex = dir.value.directories.findIndex(
       (dir) => dir.name === targetDirName
     )
@@ -79,7 +82,7 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 模拟 cd ..
   const cdBack = () => {
-    historyPath.value = currentFullPath.value
+    setHistoryPath(currentFullPath.value)
     if (dir.value.previous) {
       dir.value = dir.value.previous
     }
@@ -87,8 +90,38 @@ export const useDirectoryStore = defineStore('directory', () => {
 
   // 模拟 pwd
   const pwd = () => {
-    historyPath.value = currentFullPath.value
+    setHistoryPath(currentFullPath.value)
     addShowCommand('pwd')
+  }
+
+  // 模拟 mkdir dirName
+  const mkdir = (dirName: string): number => {
+    setHistoryPath(currentFullPath.value)
+    const targetDirIndex = dir.value.directories.findIndex(
+      (dir) => dir.name === dirName
+    )
+    if (targetDirIndex !== -1) {
+      return 1 // 操作失败
+    }
+    dir.value.directories.push({
+      id: dir.value.directories.length,
+      name: dirName,
+      files: [],
+      previous: dir.value,
+      directories: []
+    })
+    return 0 // 操作成功
+  }
+
+  // 模拟 ls
+  const filesAndDirectories = computed(() => {
+    const files = dir.value.files.join('\n')
+    const directories = dir.value.directories.map((dir) => dir.name).join('\n')
+    return [files + '\n', directories]
+  })
+  const ls = () => {
+    setHistoryPath(currentFullPath.value)
+    addShowCommand('ls')
   }
 
   return {
@@ -101,6 +134,8 @@ export const useDirectoryStore = defineStore('directory', () => {
     addShowCommand,
     currentFullPath,
     historyPath,
-    pwd
+    pwd,
+    filesAndDirectories,
+    ls
   }
 })

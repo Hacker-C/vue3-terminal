@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const directory = useDirectoryStore()
 const execute = () => {
-  // 仅处理最多两个参数的命令
   const [simpleCommand, param] = commandInput.value.split(' ')
   switch (simpleCommand) {
     case 'cd':
@@ -16,6 +15,9 @@ const execute = () => {
       return void (commandInput.value = '')
     case 'pwd':
       directory.pwd()
+      return void (commandInput.value = '')
+    case 'ls':
+      directory.ls()
       return void (commandInput.value = '')
   }
   directory.addShowCommand(commandInput.value)
