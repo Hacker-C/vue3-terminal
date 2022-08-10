@@ -26,11 +26,12 @@
   }
   .box-body {
     @apply text-white font-['monaco']
-      bg-body h-[90vh] pb-3 overflow-auto rounded-bl-md rounded-br-md;
+      bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md
+      p-5;
   }
   /* 命令输入框 */
   .command-input {
-    @apply bg-body outline-none  w-screen ml-3
+    @apply bg-body outline-none  w-screen ml-5
       text-red-600 caret-white border-none pb-1;
   }
 }

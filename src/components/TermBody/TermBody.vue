@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const directory = useDirectoryStore()
+const isWelcomeShow = ref(true)
 const execute = () => {
   const [simpleCommand, param] = commandInput.value.split(' ')
   switch (simpleCommand) {
@@ -11,6 +12,7 @@ const execute = () => {
       }
       break
     case 'clear':
+      isWelcomeShow.value = false
       directory.clearShowCommands()
       return void (commandInput.value = '')
     case 'pwd':
@@ -24,6 +26,12 @@ const execute = () => {
       return void (commandInput.value = '')
     case 'touch':
       directory.touch(param)
+      return void (commandInput.value = '')
+    case 'welecome':
+      directory.addShowCommand(commandInput.value)
+      return void (commandInput.value = '')
+    case 'help':
+      directory.addShowCommand(commandInput.value)
       return void (commandInput.value = '')
     default:
       directory.setHistoryPath()
@@ -41,9 +49,11 @@ onMounted(() => {
   })
 })
 </script>
+
 <template>
   <main class="box-body scrollbar">
     <div ref="termBody">
+      <TermWelcome v-show="isWelcomeShow" />
       <!-- 历史命令区域 HistoryCommand -->
       <HistoryCommand
         v-for="value of directory.showCommands"

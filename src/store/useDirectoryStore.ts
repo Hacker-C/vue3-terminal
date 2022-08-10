@@ -1,5 +1,3 @@
-// import { ls, filesAndDirectories } from './ls'
-
 export interface Directory {
   id: number
   name: string
@@ -38,7 +36,7 @@ function initDir(): Directory {
 
 export const useDirectoryStore = defineStore('directory', () => {
   // 文件总目录
-  const dir = ref<Directory>(initDir())
+  const dir = ref<Directory>(initDir().directories[0].directories[0])
   // 当前目录名
   const currentDirName = computed(() => dir.value.name)
   // 当前目录完整路径
@@ -53,7 +51,23 @@ export const useDirectoryStore = defineStore('directory', () => {
   })
 
   // NOTE 合法指令（已经完成的指令）
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch']
+  // prettier-ignore
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help']
+  const commandDescription = [
+    'cd [dirname] - change directory',
+    'ls - list files in current directory',
+    'pwd - print current directory',
+    'clear - clear screen',
+    'mkdir [dirname] - create directory',
+    'touch [filename] - create file',
+    'welcome - welcome message',
+    'help - help message'
+  ]
+  const commandHelp = computed(() => {
+    return ValidCommands.map((item, index) => {
+      return [item, commandDescription[index]]
+    })
+  })
 
   // 是否合法的命令
   const isValidCommand = (command: string) => {
@@ -169,6 +183,7 @@ export const useDirectoryStore = defineStore('directory', () => {
     isValidCommand,
     mkdir,
     touch,
-    setHistoryPath
+    setHistoryPath,
+    commandHelp
   }
 })
