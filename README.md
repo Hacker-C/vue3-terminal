@@ -1,4 +1,8 @@
-# vue3-terminal
+<p align='center'>
+English | <a href='./README.zh-CN.md'>中文</a>
+</p>
+
+# Vue3-Terminal
 
 ## About
 
