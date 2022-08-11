@@ -8,7 +8,8 @@
     @apply max-w-screen-lg h-[98vh]
       overflow-hidden
       rounded-md
-      mx-auto mt-2;
+      mx-auto mt-2
+      font-['Monaco_Font'];
   }
   .box-header {
     @apply bg-header h-10  pr-2 leading-10
@@ -25,7 +26,7 @@
     @apply rounded-full h-3 w-3 ml-2;
   }
   .box-body {
-    @apply text-white font-['monaco']
+    @apply text-white
       bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md
       p-5;
   }
@@ -52,4 +53,12 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #9f9f9f;
   }
+}
+
+/* 字体引入 */
+@font-face {
+  font-family: 'Monaco Font';
+  src: url('./fonts/Monaco.ttf');
+  font-weight: normal;
+  font-style: normal;
 }
