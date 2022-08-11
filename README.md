@@ -1,46 +1,41 @@
 # vue3-terminal
 
-This template should help get you started developing with Vue 3 in Vite.
+## welcome
 
-## Recommended IDE Setup
+Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+Onlie: https://vue3-terminal.vercel.app
 
-## Type Support for `.vue` Imports in TS
+It has some basic commands below(with the most basic usage):
+- `cd [dirname]` - change directory
+- `cd ..` - goto last directory
+- `ls` - list files in current directory
+- `pwd` - print current directory
+- `clear` - clear screen
+- `mkdir [dirname]` - create directory
+- `touch [filename]` - create file
+- `welcome` - welcome message
+- `help` - help message
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+More commands will be added...
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+## Develop
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
+I used [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) and [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) to auto import api and components, remember to set the code below to `true` to generate `.eslintrc-auto-import.json` when you first run `pnpm dev`: (to make eslint not report errors)
+```ts
+eslintrc: {
+  // default false，when you fisrt `pnpm dev` or need to update, set it to true
+  enabled: true, 
+  filepath: './.eslintrc-auto-import.json'
+}
 ```
 
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+Then you can start:
+```bash
+# Install
+pnpm install
+# Run
+pnpm dev
+# Build
+pnpm build
 ```
