@@ -1,6 +1,6 @@
 # vue3-terminal
 
-## welcome
+## About
 
 Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
@@ -18,6 +18,13 @@ It has some basic commands below(with the most basic usage):
 - `help` - help message
 
 More commands will be added...
+
+## Framework and library
+
+- Vue3 + TypeScript + Vite
+- Pinia
+- TailwindCSS
+- unplugin-auto-import + unplugin-vue-components: for auto inports of api and components
 
 ## Develop
 
@@ -39,4 +46,21 @@ pnpm install
 pnpm dev
 # Build
 pnpm build
+```
+
+## Descriptiton
+
+The data structure of the terminal system is a *N-ary tree* which simulates the diractory structure of real machine. But there is a slight difference between them, I design a pointer called previous point to its parent node.
+
+>  **Note**
+> More about n-ary-tree: [N-ary Tree Data Structure](https://www.studytonight.com/advanced-data-structures/nary-tree)
+
+```ts
+interface Directory {
+  id: number  // id
+  name: string // current directory name
+  files: string[] // all files below current directory
+  directories: Directory[]   // all diractories, alos a pointer which points to its children nodes
+  previous: Directory | null // a pointer which points to its parent node
+}
 ```
