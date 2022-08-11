@@ -1,30 +1,19 @@
 <script setup lang="ts">
-const {
-  historyPath,
-  showCommands,
-  currentFullPath,
-  filesAndDirectories,
-  isValidCommand
-} = useDirectoryStore()
-const command = showCommands[showCommands.length - 1]
+import type { Command } from '@/store/useDirectoryStore'
+
+const { historyPath, showCommands, currentFullPath, filesAndDirectories } =
+  useDirectoryStore()
+const { commandStr, isValid, type, description } =
+  showCommands[showCommands.length - 1]
+
 defineExpose<{
-  command?: string
+  command: Command
 }>()
+
 const isMessageShow = ref(true)
-const type = computed(() => {
-  if (isValidCommand(command)) {
-    if (['ls', 'pwd'].includes(command.split(' ')[0])) {
-      return 'info'
-    }
-    return 'success'
-  } else {
-    if (command === '') {
-      isMessageShow.value = false
-      return 'none'
-    }
-    return 'error'
-  }
-})
+if (commandStr === '') {
+  isMessageShow.value = false
+}
 </script>
 
 <template>
@@ -33,27 +22,22 @@ const type = computed(() => {
       <div>{{ historyPath }}</div>
     </template>
     <template #history-command>
-      <div
-        class="pl-5"
-        :class="isValidCommand(command!) ?'text-green-500': 'text-red-500'"
-      >
-        {{ command }}
+      <div class="pl-5" :class="isValid ? 'text-green-500' : 'text-red-500'">
+        {{ commandStr }}
       </div>
     </template>
     <template #show-area>
       <div class="flex items-center">
         <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
-        <div v-if="command === 'pwd'">{{ currentFullPath }}</div>
-        <div v-else-if="command === 'ls'">
+        <div v-if="commandStr === 'pwd'">{{ currentFullPath }}</div>
+        <div v-else-if="commandStr === 'ls'">
           <span>{{ filesAndDirectories[0] }}</span>
           <span class="text-green-500">{{ filesAndDirectories[1] }}</span>
         </div>
-        <div v-if="type === 'error'">
-          command not found: {{ command.split(' ')[0] }}, type `help` for more.
-        </div>
+        <div v-if="description && isMessageShow">{{ description }}</div>
       </div>
-      <TermWelcome v-if="command.split(' ')[0] === 'welcome'" />
-      <TermHelp v-else-if="command.split(' ')[0] === 'help'" />
+      <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
+      <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />
     </template>
   </BaseCommand>
 </template>

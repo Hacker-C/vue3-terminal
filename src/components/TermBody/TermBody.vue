@@ -2,38 +2,38 @@
 const directory = useDirectoryStore()
 const isWelcomeShow = ref(true)
 const execute = () => {
-  const [simpleCommand, param] = commandInput.value.split(' ')
+  const commandStr = commandInput.value.trim()
+  const simpleCommand = commandStr.split(' ')[0]
   switch (simpleCommand) {
     case 'cd':
-      if (param === '..') {
-        directory.cdBack()
-      } else {
-        directory.cd(param)
-      }
+      directory.cd(commandStr)
       break
     case 'clear':
       isWelcomeShow.value = false
       commandInput.value = ''
       return void directory.clearShowCommands()
     case 'pwd':
-      directory.pwd()
+      directory.pwd(commandStr)
       break
     case 'ls':
-      directory.ls()
+      directory.ls(commandStr)
       break
     case 'mkdir':
-      directory.mkdir(param)
+      directory.mkdir(commandStr)
       break
     case 'touch':
-      directory.touch(param)
+      directory.touch(commandStr)
       break
-    case 'welecome':
+    case 'welcome':
+      directory.welcome(commandStr)
+      break
     case 'help':
+      directory.help(commandStr)
       break
     default:
-      directory.setHistoryPath()
+      directory.handleOther(commandStr)
+      break
   }
-  directory.addShowCommand(commandInput.value)
   start = directory.showCommands.length - 1
   commandInput.value = ''
 }
@@ -57,9 +57,9 @@ const goToHistoryCommand = (keyName: string) => {
     start = directory.showCommands.length - 1
   }
   if (keyName === 'ArrowUp') {
-    commandInput.value = directory.showCommands[start--]
+    commandInput.value = directory.showCommands[start--].commandStr
   } else {
-    commandInput.value = directory.showCommands[start++]
+    commandInput.value = directory.showCommands[start++].commandStr
   }
 }
 useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
@@ -76,12 +76,12 @@ useAddEventListener(document, 'keydown', ((e: KeyboardEvent) => {
       <TermWelcome v-show="isWelcomeShow" />
       <!-- 历史命令区域 HistoryCommand -->
       <HistoryCommand
-        v-for="value of directory.showCommands"
-        :key="value"
-        :command="value"
+        v-for="command of directory.showCommands"
+        :key="command.commandStr"
+        :command="command"
       >
         <template #history-command>
-          <div class="command-input">{{ value }}</div>
+          <div class="command-input">{{ command.commandStr }}</div>
         </template>
       </HistoryCommand>
       <!-- 命令输入框区域 InputCommand -->
