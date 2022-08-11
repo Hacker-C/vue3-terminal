@@ -9,7 +9,7 @@
       overflow-hidden
       rounded-md
       mx-auto mt-2
-      font-['Monaco_Font'];
+      font-['Monaco','Monaco_Font'];
   }
   .box-header {
     @apply bg-header h-10  pr-2 leading-10
@@ -61,4 +61,5 @@
   src: url('./fonts/Monaco.ttf');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
