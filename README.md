@@ -23,6 +23,7 @@ More commands will be added...
 
 I used [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) and [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) to auto import api and components, remember to set the code below to `true` to generate `.eslintrc-auto-import.json` when you first run `pnpm dev`: (to make eslint not report errors)
 ```ts
+// vite.config.ts, Ln 26, Col 7
 eslintrc: {
   // default false，when you fisrt `pnpm dev` or need to update, set it to true
   enabled: true, 
