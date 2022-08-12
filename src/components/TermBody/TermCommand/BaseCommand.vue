@@ -12,7 +12,7 @@ defineProps<Props>()
   -->
   <div class="pt-3 pr-5">
     <div class="text-[#00afff] flex items-center">
-      <Icon icon="bi:apple" class="mr-2 mb-1" />
+      <Icon icon="uim:vuejs" class="mr-2 w-5 h-5 text-[#42b883]" />
       <slot name="path"></slot>
     </div>
     <div class="flex items-center">
