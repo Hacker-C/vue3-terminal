@@ -1,6 +1,6 @@
-// 模拟 mkdir dirName
 import uds from '../useDirectoryStore'
 
+// 模拟 mkdir dirName
 export const mkdir = (commandStr: string) => {
   uds().setHistoryPath()
   // 暂时只取第一个文件目录参数

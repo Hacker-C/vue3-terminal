@@ -6,6 +6,8 @@ const { historyPath, showCommands, currentFullPath, filesAndDirectories } =
 const { commandStr, isValid, type, description } =
   showCommands[showCommands.length - 1]
 
+const [files, directories] = filesAndDirectories()
+
 defineExpose<{
   command: Command
 }>()
@@ -31,8 +33,8 @@ if (commandStr === '') {
         <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
         <div v-if="commandStr === 'pwd'">{{ currentFullPath }}</div>
         <div v-else-if="commandStr === 'ls'">
-          <span>{{ filesAndDirectories[0] }}</span>
-          <span class="text-green-500">{{ filesAndDirectories[1] }}</span>
+          <span>{{ files }}</span>
+          <span class="text-green-500">{{ directories }}</span>
         </div>
         <div v-if="description && isMessageShow">{{ description }}</div>
       </div>

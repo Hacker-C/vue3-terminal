@@ -41,6 +41,7 @@ function initDir(): Directory {
   return dir
 }
 
+// 解析命令
 function splitCommand(command: string): string[] {
   return [command.split(' ')[0], command.split(' ').slice(1).join(' ')]
 }
@@ -61,7 +62,7 @@ const useDirectoryStore = defineStore('directory', () => {
     return path
   })
 
-  // NOTE 合法指令（已经完成的指令）
+  // 合法指令（已经完成的指令）
   // prettier-ignore
   const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help']
   const commandDescription = [
@@ -74,6 +75,8 @@ const useDirectoryStore = defineStore('directory', () => {
     'welcome - welcome message',
     'help - help message'
   ]
+
+  // 帮助命令信息 help
   const commandHelp = computed(() => {
     return ValidCommands.map((item, index) => {
       return [item, commandDescription[index]]
@@ -87,10 +90,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // 显示在屏幕上的历史命令
   const showCommands = ref<Command[]>([])
-  // 清空屏幕
-  const clearShowCommands = () => {
-    showCommands.value.splice(0, showCommands.value.length)
-  }
+
   // 添加历史命令
   const addShowCommand = (command: Command) => {
     showCommands.value.push({
@@ -101,68 +101,9 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // 维护一个固定的上一次历史命令
   const historyPath = ref('/')
+  // 记录上一次的历史命令
   const setHistoryPath = () => {
     historyPath.value = currentFullPath.value
-  }
-
-  // 模拟 touch fileName
-  const touch = (commandStr: string) => {
-    setHistoryPath()
-    // 暂时只取第一个文件名参数
-    const fileName = commandStr.split(' ')[1]
-    const targetFileIndex = dir.value.files.findIndex(
-      (file) => file === fileName
-    )
-    if (targetFileIndex !== -1) {
-      // 存在同名文件，操作失败
-      addShowCommand({
-        commandStr,
-        type: 'warning',
-        description: `file ${fileName} exists!`
-      })
-      return
-    }
-    // 操作成功
-    dir.value.files.push(fileName)
-    addShowCommand({
-      commandStr,
-      type: 'success'
-    })
-  }
-
-  // 模拟 ls
-  const filesAndDirectories = computed(() => {
-    const files = dir.value.files.join('\n')
-    const directories = dir.value.directories
-      .map((curDir) => curDir.name)
-      .join('\n')
-    return [files + '\n', directories]
-  })
-  const ls = (commandStr: string) => {
-    setHistoryPath()
-    addShowCommand({
-      commandStr,
-      type: 'info'
-    })
-  }
-
-  // 模拟 welcome
-  const welcome = (commandStr: string) => {
-    setHistoryPath()
-    addShowCommand({
-      commandStr,
-      type: 'info'
-    })
-  }
-
-  // 模拟 help
-  const help = (commandStr: string) => {
-    setHistoryPath()
-    addShowCommand({
-      commandStr,
-      type: 'info',
-      description: 'valid commands:'
-    })
   }
 
   // 处理其他
