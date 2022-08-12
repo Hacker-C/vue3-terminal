@@ -53,11 +53,14 @@ pnpm dev
 pnpm build
 ```
 
+> **Warning**  
+> 每次创建新命令，推荐在 `src/store/commands` 下新建一个模块文件（格式参考已经写好的命令），新建文件后需要重新启动项目以使得 auto-imports 生效。
+
 ## Descriptiton
 
 这个终端系统的数据结构是一个 *N叉树（N-ary Tree）*，它模拟了真机的目录结构，以便实现新建文件和目录等功能。但是有一点不同，我设计了一个指针属性 `previous`，指向它的父节点，以便实现 `cd ..` 命令。
 
->  **Note**
+>  **Note**  
 > 更多关于 N 叉树的知识: [N-ary Tree Data Structure](https://www.studytonight.com/advanced-data-structures/nary-tree)
 
 ```ts

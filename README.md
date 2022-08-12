@@ -52,6 +52,9 @@ pnpm dev
 pnpm build
 ```
 
+> **Warning**
+> every time you create a new command, recommend to create a new module file (format reference to the already finished commands)，after that you should restart the project to make auto-imports works.
+
 ## Descriptiton
 
 The data structure of the terminal system is a *N-ary tree* which simulates the diractory structure of real machine. But there is a slight difference between them, I design a pointer called previous point to its parent node.
