@@ -30,6 +30,9 @@ const execute = () => {
     case 'help':
       directory.help(commandStr)
       break
+    case 'echo':
+      directory.echo(commandStr)
+      break
     default:
       directory.handleOther(commandStr)
       break

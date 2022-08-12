@@ -64,7 +64,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // 合法指令（已经完成的指令）
   // prettier-ignore
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo']
   const commandDescription = [
     'cd [dirname] - change directory',
     'ls - list files in current directory',
@@ -73,7 +73,8 @@ const useDirectoryStore = defineStore('directory', () => {
     'mkdir [dirname] - create directory',
     'touch [filename] - create file',
     'welcome - welcome message',
-    'help - help message'
+    'help - help message',
+    'echo [message] - echo message'
   ]
 
   // 帮助命令信息 help
@@ -137,7 +138,8 @@ const useDirectoryStore = defineStore('directory', () => {
     welcome,
     help,
     handleOther,
-    splitCommand
+    splitCommand,
+    echo
   }
 })
 
