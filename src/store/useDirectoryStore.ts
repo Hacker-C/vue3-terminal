@@ -45,7 +45,7 @@ function splitCommand(command: string): string[] {
   return [command.split(' ')[0], command.split(' ').slice(1).join(' ')]
 }
 
-export const useDirectoryStore = defineStore('directory', () => {
+const useDirectoryStore = defineStore('directory', () => {
   // 文件总目录
   const dir = ref<Directory>(initDir().directories[0].directories[0])
   // 当前目录名
@@ -103,85 +103,6 @@ export const useDirectoryStore = defineStore('directory', () => {
   const historyPath = ref('/')
   const setHistoryPath = () => {
     historyPath.value = currentFullPath.value
-  }
-
-  // 模拟 cd dir
-  const cd = (commandStr: string) => {
-    setHistoryPath()
-    const dirname = splitCommand(commandStr)[1]
-    if (dirname === '..') {
-      cdBack()
-      // 成功
-      return void addShowCommand({
-        commandStr,
-        type: 'success'
-      })
-    }
-    const targetDirIndex = dir.value.directories.findIndex(
-      (curDir) => curDir.name === dirname
-    )
-    if (targetDirIndex === -1) {
-      // 操作失败
-      console.log(commandStr)
-      return void addShowCommand({
-        commandStr,
-        type: 'warning',
-        description: 'directory not found'
-      })
-    }
-    // 操作成功
-    dir.value = dir.value.directories[targetDirIndex]
-    addShowCommand({
-      commandStr,
-      type: 'success'
-    })
-  }
-
-  // 模拟 cd ..
-  const cdBack = () => {
-    if (dir.value.previous) {
-      dir.value = dir.value.previous
-    }
-  }
-
-  // 模拟 pwd
-  const pwd = (commandStr: string) => {
-    setHistoryPath()
-    addShowCommand({
-      commandStr,
-      type: 'success'
-    })
-  }
-
-  // 模拟 mkdir dirName
-  const mkdir = (commandStr: string) => {
-    setHistoryPath()
-    // 暂时只取第一个文件目录参数
-    const dirName = commandStr.split(' ')[1]
-    const targetDirIndex = dir.value.directories.findIndex(
-      (dir) => dir.name === dirName
-    )
-    if (targetDirIndex !== -1) {
-      // 存在同名文件夹，操作失败
-      addShowCommand({
-        commandStr,
-        type: 'warning',
-        description: `dir ${dirName} exists!`
-      })
-      return
-    }
-    // 操作成功
-    dir.value.directories.push({
-      id: dir.value.directories.length,
-      name: dirName,
-      files: [],
-      previous: dir.value,
-      directories: []
-    })
-    addShowCommand({
-      commandStr,
-      type: 'success'
-    })
   }
 
   // 模拟 touch fileName
@@ -274,6 +195,9 @@ export const useDirectoryStore = defineStore('directory', () => {
     commandHelp,
     welcome,
     help,
-    handleOther
+    handleOther,
+    splitCommand
   }
 })
+
+export default useDirectoryStore
