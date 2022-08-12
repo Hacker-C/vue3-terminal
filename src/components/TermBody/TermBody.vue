@@ -1,41 +1,23 @@
 <script setup lang="ts">
 const directory = useDirectoryStore()
 const isWelcomeShow = ref(true)
+
+// 执行指令
 const execute = () => {
   const commandStr = commandInput.value.trim()
   const simpleCommand = commandStr.split(' ')[0]
-  switch (simpleCommand) {
-    case 'cd':
-      directory.cd(commandStr)
-      break
-    case 'clear':
-      isWelcomeShow.value = false
-      commandInput.value = ''
-      return void directory.clearShowCommands()
-    case 'pwd':
-      directory.pwd(commandStr)
-      break
-    case 'ls':
-      directory.ls(commandStr)
-      break
-    case 'mkdir':
-      directory.mkdir(commandStr)
-      break
-    case 'touch':
-      directory.touch(commandStr)
-      break
-    case 'welcome':
-      directory.welcome(commandStr)
-      break
-    case 'help':
-      directory.help(commandStr)
-      break
-    case 'echo':
-      directory.echo(commandStr)
-      break
-    default:
-      directory.handleOther(commandStr)
-      break
+  if (simpleCommand === 'clear') {
+    isWelcomeShow.value = false
+    commandInput.value = ''
+    return void directory.clearShowCommands()
+  }
+  type Options = keyof typeof directory
+  if (directory[simpleCommand as Options]) {
+    void (
+      directory[simpleCommand as Options] as (...args: unknown[]) => unknown
+    )(commandStr)
+  } else {
+    directory.handleOther(commandStr)
   }
   start = directory.showCommands.length - 1
   commandInput.value = ''
