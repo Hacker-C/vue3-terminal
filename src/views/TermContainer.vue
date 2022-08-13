@@ -4,7 +4,9 @@ const VDownDrag = {
     el.style.cursor = 'move'
     let [x, y, startX, startY, moveX, moveY] = Array(6).fill(0) as number[]
     el.addEventListener('mousedown', (e: MouseEvent) => {
+      // 防止鼠标移动到窗口外丢失 mouseup 事件
       e.stopPropagation()
+      e.preventDefault()
       x = e.pageX
       y = e.pageY
       startX = el.offsetLeft
@@ -18,7 +20,17 @@ const VDownDrag = {
           moveX = e.pageX - x
           moveY = e.pageY - y
           el.style.left = `${startX + moveX}px`
-          el.style.top = `${startY + moveY}px`
+          let resY = 0
+          if (startY + moveY <= -10) {
+            // 防止过度拖动，超出窗口顶部外
+            resY = -10
+          } else if (startY + moveY >= window.innerHeight - 50) {
+            // 防止过度拖动，超出窗口底部外
+            resY = window.innerHeight - 50
+          } else {
+            resY = startY + moveY
+          }
+          el.style.top = `${resY}px`
         })
       }
     })
