@@ -8,23 +8,29 @@
     @apply w-[80%] h-[100vh]
       overflow-hidden
       rounded-md
-      mx-auto mt-2
+      mx-auto
       font-['Monaco','Monaco_Font']
       absolute;
   }
   .box-header {
-    @apply bg-header h-10  pr-2 leading-10
+    @apply bg-header h-10 leading-10
       flex;
   }
   .circle-container {
-    @apply flex flex-row items-center justify-center;
+    @apply flex flex-row justify-around items-center w-20 p-2;
   }
   .center-dir-title {
     @apply flex-1 text-center flex items-center justify-center
       text-white text-xl;
   }
   .circle {
-    @apply rounded-full h-3 w-3 ml-2;
+    @apply rounded-full h-3 w-3 
+    flex items-center justify-center
+    transition-all duration-200 ease-in-out;
+  }
+  .circle-icon {
+    @apply w-3 h-3 hidden
+    transition-all duration-200 ease-in-out;
   }
   .box-body {
     @apply text-white text-lg
@@ -39,6 +45,15 @@
 }
 
 @layer utilities {
+  /* 三个功能按钮 */
+  .circle-container:hover div {
+    @apply w-4 h-4;
+  }
+  .circle-container:hover .circle-icon {
+    @apply block;
+  }
+
+  /* 修改滚动条样式 */
   .scrollbar::-webkit-scrollbar {
     width: 14px;
     height: 20px;

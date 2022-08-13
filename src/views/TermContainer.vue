@@ -1,7 +1,6 @@
 <script setup lang="ts">
 const VDownDrag = {
   mounted: (el: HTMLElement) => {
-    el.style.cursor = 'move'
     let [x, y, startX, startY, moveX, moveY] = Array(6).fill(0) as number[]
     el.addEventListener('mousedown', (e: MouseEvent) => {
       // 防止鼠标移动到窗口外丢失 mouseup 事件
@@ -16,17 +15,18 @@ const VDownDrag = {
         window.removeEventListener('mousemove', fn)
       })
       function fn(e: MouseEvent) {
+        e.stopImmediatePropagation()
         requestAnimationFrame(() => {
           moveX = e.pageX - x
           moveY = e.pageY - y
           el.style.left = `${startX + moveX}px`
           let resY = 0
-          if (startY + moveY <= -10) {
+          if (startY + moveY <= 0) {
             // 防止过度拖动，超出窗口顶部外
-            resY = -10
-          } else if (startY + moveY >= window.innerHeight - 50) {
+            resY = 0
+          } else if (startY + moveY >= window.innerHeight - 40) {
             // 防止过度拖动，超出窗口底部外
-            resY = window.innerHeight - 50
+            resY = window.innerHeight - 40
           } else {
             resY = startY + moveY
           }
@@ -51,6 +51,7 @@ const VDownDrag = {
 .screen {
   @apply w-screen h-screen fixed
       flex justify-center
-      bg-[url('@/assets/images/bg-macos.jpg')] bg-center bg-cover;
+      bg-[url('@/assets/images/bg-macos.jpg')] bg-center bg-cover
+      pt-2;
 }
 </style>
