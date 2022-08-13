@@ -16,7 +16,7 @@ provide(closeKey, () => {
       <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
       <p class="text-gray-200 mt-1">Vue3 Terminal</p>
     </div>
-    <TermContainer v-if="isOpen" />
+    <TermContainer v-show="isOpen" />
   </div>
 </template>
 
