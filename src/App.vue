@@ -1,3 +1,3 @@
 <template>
-  <TermContainer />
+  <TermApp />
 </template>

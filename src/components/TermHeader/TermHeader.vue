@@ -1,17 +1,17 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+
 const { currentDirName } = storeToRefs(useDirectoryStore())
 
-const close = (e: Event) => {
-  console.log('close')
-}
+// 触发关闭终端 TermApp
+const foo = inject<() => void>(closeKey)
 </script>
 
 <template>
   <!-- 终端顶部区域 -->
   <header class="box-header">
     <div class="circle-container">
-      <div @click="close" class="circle bg-red-600">
+      <div @click="foo" class="circle bg-red-600">
         <Icon class="circle-icon" icon="ep:close-bold" />
       </div>
       <div class="circle bg-yellow-400">

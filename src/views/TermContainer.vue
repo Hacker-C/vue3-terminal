@@ -39,19 +39,8 @@ const VDownDrag = {
 </script>
 
 <template>
-  <div class="screen">
-    <div class="box-container" v-down-drag>
-      <TermHeader />
-      <TermBody @mousedown.stop class="cursor-auto opacity-90" />
-    </div>
+  <div class="box-container" v-down-drag>
+    <TermHeader />
+    <TermBody @mousedown.stop class="cursor-auto opacity-90" />
   </div>
 </template>
-
-<style scoped>
-.screen {
-  @apply w-screen h-screen fixed
-      flex justify-center
-      bg-[url('@/assets/images/bg-macos.jpg')] bg-center bg-cover
-      pt-2;
-}
-</style>
