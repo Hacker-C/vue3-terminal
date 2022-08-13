@@ -5,7 +5,7 @@
 @layer components {
   .box-container {
     /* w-[80%] sm:w-[60%] lg:w-[50%]  */
-    @apply max-w-screen-lg h-[98vh]
+    @apply w-[80%] h-[100vh]
       overflow-hidden
       rounded-md
       mx-auto mt-2

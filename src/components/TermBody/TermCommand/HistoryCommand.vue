@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import type { Command } from '@/store/useDirectoryStore'
 
-const { historyPath, showCommands, currentFullPath, filesAndDirectories } =
-  useDirectoryStore()
+const { historyPath, showCommands, filesAndDirectories } = useDirectoryStore()
 const { commandStr, isValid, type, description } =
   showCommands[showCommands.length - 1]
 
@@ -29,14 +28,13 @@ if (commandStr === '') {
       </div>
     </template>
     <template #show-area>
-      <div class="flex items-center">
-        <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
-        <div v-if="commandStr === 'pwd'">{{ currentFullPath }}</div>
-        <div v-else-if="commandStr === 'ls'">
-          <span>{{ files }}</span>
-          <span class="text-green-500">{{ directories }}</span>
-        </div>
-        <div v-if="description && isMessageShow">{{ description }}</div>
+      <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
+      <div v-if="commandStr === 'ls'" class="break-words">
+        <span>{{ files }}</span>
+        <span class="text-green-500">{{ directories }}</span>
+      </div>
+      <div v-if="description && isMessageShow" class="break-words">
+        {{ description }}
       </div>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
       <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />

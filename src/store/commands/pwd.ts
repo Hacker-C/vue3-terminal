@@ -5,6 +5,7 @@ export const pwd = (commandStr: string) => {
   uds().setHistoryPath()
   uds().addShowCommand({
     commandStr,
-    type: 'success'
+    type: 'success',
+    description: uds().currentFullPath
   })
 }
