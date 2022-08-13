@@ -9,7 +9,8 @@
       overflow-hidden
       rounded-md
       mx-auto mt-2
-      font-['Monaco','Monaco_Font'];
+      font-['Monaco','Monaco_Font']
+      absolute;
   }
   .box-header {
     @apply bg-header h-10  pr-2 leading-10

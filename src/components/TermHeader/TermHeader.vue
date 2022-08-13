@@ -8,7 +8,7 @@
     </div>
     <div class="center-dir-title">
       <Icon icon="ant-design:folder-filled" class="text-[#57c5ff]" />
-      <span class="ml-2">{{ currentDirName }}</span>
+      <span class="ml-2 select-none">{{ currentDirName }}</span>
     </div>
     <div class="circle-container"></div>
   </header>
