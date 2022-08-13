@@ -11,7 +11,9 @@ const execute = () => {
     commandInput.value = ''
     return void directory.clearShowCommands()
   }
-  type Options = keyof typeof directory
+  // prettier-ignore
+  // 这里不加 prettier-ignore，用不了分号，无法隔离上下文，vsc 高亮丢失
+  type Options = keyof typeof directory;
   if (directory[simpleCommand as Options]) {
     void (
       directory[simpleCommand as Options] as (...args: unknown[]) => unknown
