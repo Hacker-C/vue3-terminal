@@ -1,6 +1,5 @@
-import uds from '../useDirectoryStore'
-
-// 清空屏幕 clear
+// clear screen
 export const clearShowCommands = () => {
-  uds().showCommands.splice(0, uds().showCommands.length)
+  const { showCommands } = useDirectoryStore()
+  showCommands.splice(0, showCommands.length)
 }

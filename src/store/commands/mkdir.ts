@@ -1,31 +1,31 @@
-import uds from '../useDirectoryStore'
-
-// 模拟 mkdir dirName
+// mkdir dirName
 export const mkdir = (commandStr: string) => {
-  uds().setHistoryPath()
-  // 暂时只取第一个文件目录参数
+  const { setHistoryPath, addShowCommand } = useDirectoryStore()
+  const { dir } = storeToRefs(useDirectoryStore())
+  setHistoryPath()
+  // only get the first file directory parameter
   const dirName = commandStr.split(' ')[1]
-  const targetDirIndex = uds().dir.directories.findIndex(
+  const targetDirIndex = dir.value.directories.findIndex(
     (curDir) => curDir.name === dirName
   )
   if (targetDirIndex !== -1) {
-    // 存在同名文件夹，操作失败
-    uds().addShowCommand({
+    // if the directory already exists, operation failed
+    addShowCommand({
       commandStr,
       type: 'warning',
       description: `dir ${dirName} exists!`
     })
     return
   }
-  // 操作成功
-  uds().dir.directories.push({
-    id: uds().dir.directories.length,
+  // success
+  dir.value.directories.push({
+    id: dir.value.directories.length,
     name: dirName,
     files: [],
-    previous: uds().dir,
+    previous: dir.value,
     directories: []
   })
-  uds().addShowCommand({
+  addShowCommand({
     commandStr,
     type: 'success'
   })

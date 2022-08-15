@@ -1,11 +1,11 @@
-import uds from '../useDirectoryStore'
-
-// 模拟 pwd
+// pwd
 export const pwd = (commandStr: string) => {
-  uds().setHistoryPath()
-  uds().addShowCommand({
+  const { setHistoryPath, addShowCommand, currentFullPath } =
+    useDirectoryStore()
+  setHistoryPath()
+  addShowCommand({
     commandStr,
     type: 'success',
-    description: uds().currentFullPath
+    description: currentFullPath
   })
 }

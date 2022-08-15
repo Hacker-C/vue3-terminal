@@ -1,9 +1,8 @@
-import uds from '../useDirectoryStore'
-
-// 模拟 help
+// help
 export const help = (commandStr: string) => {
-  uds().setHistoryPath()
-  uds().addShowCommand({
+  const { setHistoryPath, addShowCommand } = useDirectoryStore()
+  setHistoryPath()
+  addShowCommand({
     commandStr,
     type: 'info',
     description: 'valid commands:'

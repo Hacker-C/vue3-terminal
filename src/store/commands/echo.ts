@@ -1,10 +1,9 @@
-import uds from '../useDirectoryStore'
-
 export const echo = (commandStr: string) => {
-  uds().setHistoryPath()
-  uds().addShowCommand({
+  const { setHistoryPath, addShowCommand, splitCommand } = useDirectoryStore()
+  setHistoryPath()
+  addShowCommand({
     commandStr,
     type: 'info',
-    description: uds().splitCommand(commandStr)[1]
+    description: splitCommand(commandStr)[1]
   })
 }
