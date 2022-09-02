@@ -1,5 +1,5 @@
 // the structure of file
-interface File {
+export interface File {
   name: string
   value: string
 }
@@ -27,8 +27,8 @@ function initDir(): Directory {
     id: 0,
     name: '/',
     files: [
-      { name: 'file1.txt', value: '' },
-      { name: 'file2.txt', value: '' }
+      { name: 'file1.txt', value: '哈哈哈' },
+      { name: 'file2.txt', value: '嘻嘻嘻' }
     ],
     previous: null,
     directories: []
@@ -75,7 +75,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // valid commands(finished commands)
   // prettier-ignore
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo', 'cat']
   const commandDescription = [
     'cd [dirname] - change directory',
     'ls - list files in current directory',
@@ -85,7 +85,8 @@ const useDirectoryStore = defineStore('directory', () => {
     'touch [filename] - create file',
     'welcome - welcome message',
     'help - help message',
-    'echo [message] - echo message'
+    'echo [message] - echo message',
+    'cat [filename] - cat file'
   ]
 
   // help message
@@ -150,7 +151,8 @@ const useDirectoryStore = defineStore('directory', () => {
     help,
     handleOther,
     splitCommand,
-    echo
+    echo,
+    cat
   }
 })
 
