@@ -85,7 +85,7 @@ const useDirectoryStore = defineStore('directory', () => {
     'touch [filename] - create file',
     'welcome - welcome message',
     'help - help message',
-    'echo [message] - echo message',
+    'echo [message] / echo [text] > [file] / echo [text] >> [file]',
     'cat [filename] - cat file'
   ]
 
