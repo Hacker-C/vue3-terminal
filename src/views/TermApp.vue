@@ -9,12 +9,11 @@ provide(closeKey, () => {
 
 <template>
   <div class="screen">
-    <div
-      class="self-start h-screen ml-2 flex flex-col items-center"
-      @click="isOpen = !isOpen"
-    >
-      <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
-      <p class="text-gray-200 mt-1">Vue3 Terminal</p>
+    <div class="self-start h-screen ml-2 flex flex-col items-center">
+      <div @click="isOpen = !isOpen" class="flex flex-col items-center">
+        <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
+        <p class="text-gray-200 mt-1">Vue3 Terminal</p>
+      </div>
     </div>
     <TermContainer v-show="isOpen" />
   </div>
