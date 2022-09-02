@@ -63,12 +63,21 @@ pnpm build
 >  **Note**  
 > 更多关于 N 叉树的知识: [N-ary Tree Data Structure](https://www.studytonight.com/advanced-data-structures/nary-tree)
 
+目录类型的结构：
 ```ts
 interface Directory {
   id: number  // id
   name: string // 当前目录名称
-  files: string[] // 当前目录下的文件列表
+  files: File[] // 当前目录下的文件列表
   directories: Directory[]   // 当前目录下的子目录列表，同时也是指向子目录的指针
   previous: Directory | null // 指向父目录的指针
+}
+```
+
+文件类型的结构：
+```ts
+interface File {
+  name: string // file name
+  value: string // file content
 }
 ```

@@ -66,8 +66,16 @@ The data structure of the terminal system is a *N-ary tree* which simulates the 
 interface Directory {
   id: number  // id
   name: string // current directory name
-  files: string[] // all files below current directory
+  files: File[] // all files below current directory
   directories: Directory[]   // all diractories, alos a pointer which points to its children nodes
   previous: Directory | null // a pointer which points to its parent node
+}
+```
+
+This is the file data structure:
+```ts
+interface File {
+  name: string // file name
+  value: string // file content
 }
 ```
