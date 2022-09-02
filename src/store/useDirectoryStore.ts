@@ -1,8 +1,14 @@
+// the structure of file
+interface File {
+  name: string
+  value: string
+}
+
 // the directory system data structure
 export interface Directory {
   id: number
   name: string
-  files: string[]
+  files: File[]
   directories: Directory[]
   previous: Directory | null
 }
@@ -20,7 +26,10 @@ function initDir(): Directory {
   const dir: Directory = {
     id: 0,
     name: '/',
-    files: ['file1.txt', 'file2.txt'],
+    files: [
+      { name: 'file1.txt', value: '' },
+      { name: 'file2.txt', value: '' }
+    ],
     previous: null,
     directories: []
   }

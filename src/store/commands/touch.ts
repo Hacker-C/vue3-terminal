@@ -5,7 +5,9 @@ export const touch = (commandStr: string) => {
   setHistoryPath()
   // only get the first file name
   const fileName = commandStr.split(' ')[1]
-  const targetFileIndex = dir.value.files.findIndex((file) => file === fileName)
+  const targetFileIndex = dir.value.files.findIndex(
+    (file) => file.name === fileName
+  )
   if (targetFileIndex !== -1) {
     // if the file already exists, operation failed
     addShowCommand({
@@ -16,7 +18,7 @@ export const touch = (commandStr: string) => {
     return
   }
   // success
-  dir.value.files.push(fileName)
+  dir.value.files.push({ name: fileName, value: '' })
   addShowCommand({
     commandStr,
     type: 'success'
