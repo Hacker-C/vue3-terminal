@@ -17,7 +17,7 @@ provide(closeKey, () => {
     </div>
     <footer class="fixed bottom-0 text-gray-300">
       <a href="https://github.com/Hacker-C/vue3-terminal" target="_blank">
-        MurphyChen's resume</a
+        Hacker-C/vue3-terminal</a
       >
       |
       <a href="https://beian.miit.gov.cn" target="_blank"
