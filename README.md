@@ -8,7 +8,7 @@ English | <a href='./README.zh-CN.md'>中文</a>
 
 Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
-Onlie: https://vue3-terminal.vercel.app
+Onlie: https://vue3-terminal.vercel.app（or: http://terminal.mphy.top）
 
 It has some basic commands below(with the most basic usage):
 - `cd [dirname]` - change directory
