@@ -11,6 +11,10 @@ Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 Onlie: https://vue3-terminal.vercel.app (or: http://terminal.mphy.top)
 
 It has some basic commands below(with the most basic usage):
+
+- `echo [message]` - print message
+- `echo [message] > [filename]` - write file
+- `cat [filename]` - read file
 - `cd [dirname]` - change directory
 - `cd ..` - goto last directory
 - `ls` - list files in current directory

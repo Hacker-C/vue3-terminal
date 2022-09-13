@@ -11,6 +11,10 @@ Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模
 在线访问: http://terminal.mphy.top
 
 一些已经实现的具有最基本功能的命令：
+
+- `echo [message]` - 打印信息
+- `echo [message] > [filename]` - 文件写入
+- `cat [filename]` - 文件读取
 - `cd [dirname]` - 改变当前目录
 - `cd ..` - 返回上一级目录
 - `ls` - 列出当前目录下的文件和目录（文件显示白色，文件夹显示绿色）
