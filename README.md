@@ -14,6 +14,7 @@ It has some basic commands below(with the most basic usage):
 
 - `echo [message]` - print message
 - `echo [message] > [filename]` - write file
+- `echo [message] >> [filename]` - append context to file
 - `cat [filename]` - read file
 - `cd [dirname]` - change directory
 - `cd ..` - goto last directory

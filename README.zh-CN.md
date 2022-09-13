@@ -14,6 +14,7 @@ Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模
 
 - `echo [message]` - 打印信息
 - `echo [message] > [filename]` - 文件写入
+- `echo [message] >> [filename]` - 文件内容追加
 - `cat [filename]` - 文件读取
 - `cd [dirname]` - 改变当前目录
 - `cd ..` - 返回上一级目录
