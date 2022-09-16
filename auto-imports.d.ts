@@ -3,6 +3,7 @@ export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
   const acceptHMRUpdate: typeof import('pinia')['acceptHMRUpdate']
+  const baidu: typeof import('./src/store/commands/open')['baidu']
   const cat: typeof import('./src/store/commands/cat')['cat']
   const cd: typeof import('./src/store/commands/cd')['cd']
   const cdBack: typeof import('./src/store/commands/cd')['cdBack']
@@ -21,6 +22,8 @@ declare global {
   const getActivePinia: typeof import('pinia')['getActivePinia']
   const getCurrentInstance: typeof import('vue')['getCurrentInstance']
   const getCurrentScope: typeof import('vue')['getCurrentScope']
+  const github: typeof import('./src/store/commands/open')['github']
+  const google: typeof import('./src/store/commands/open')['google']
   const h: typeof import('vue')['h']
   const help: typeof import('./src/store/commands/help')['help']
   const inject: typeof import('vue')['inject']

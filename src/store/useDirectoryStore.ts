@@ -75,7 +75,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   // valid commands(finished commands)
   // prettier-ignore
-  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo', 'cat', 'open']
+  const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo', 'cat', 'open', 'google', 'baidu', 'github']
   const commandDescription = [
     'cd [dirname] - change directory',
     'ls - list files in current directory',
@@ -87,7 +87,10 @@ const useDirectoryStore = defineStore('directory', () => {
     'help - help message',
     'echo [message] / echo [text] > [file] / echo [text] >> [file]',
     'cat [filename] - cat file',
-    'open [url] - open url in new tab'
+    'open [url] - open url in new tab',
+    'google [keywords] - search keywords in google',
+    'baidu [keywords] - search keywords in baidu',
+    'github - the source code of this project'
   ]
 
   // help message
@@ -154,7 +157,10 @@ const useDirectoryStore = defineStore('directory', () => {
     splitCommand,
     echo,
     cat,
-    open
+    open,
+    google,
+    baidu,
+    github
   }
 })
 
