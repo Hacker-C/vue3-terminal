@@ -25,6 +25,10 @@ It has some basic commands below(with the most basic usage):
 - `touch [filename]` - create file
 - `welcome` - welcome message
 - `help` - help message
+- `open [url]` - open url in new tab'
+- `google [keywords]` - search keywords in google
+- `baidu [keywords]` - search keywords in baidu
+- `github` - the source code of this project
 
 More commands will be added...
 

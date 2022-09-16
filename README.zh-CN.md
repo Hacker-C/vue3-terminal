@@ -25,6 +25,9 @@ Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模
 - `touch [filename]` - 创建文件
 - `welcome` - 欢迎信息
 - `help` - 帮助信息
+- `google [keywords]` - 在 Google 搜索关键词
+- `baidu [keywords]` - 在百度搜索关键词
+- `github` - 打开项目源码地址
 
 更多命令将会被添加.
 
