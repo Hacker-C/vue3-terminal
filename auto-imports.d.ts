@@ -50,6 +50,7 @@ declare global {
   const onServerPrefetch: typeof import('vue')['onServerPrefetch']
   const onUnmounted: typeof import('vue')['onUnmounted']
   const onUpdated: typeof import('vue')['onUpdated']
+  const open: typeof import('./src/store/commands/open')['open']
   const provide: typeof import('vue')['provide']
   const pwd: typeof import('./src/store/commands/pwd')['pwd']
   const reactive: typeof import('vue')['reactive']
