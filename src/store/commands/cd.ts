@@ -19,7 +19,6 @@ export const cd = (commandStr: string) => {
   )
   if (targetDirIndex === -1) {
     // fail
-    console.log(commandStr)
     return void addShowCommand({
       commandStr,
       type: 'warning',
