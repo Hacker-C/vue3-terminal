@@ -21,12 +21,16 @@ const loaded = ref(false)
 const show = () => {
   loaded.value = true
 }
-onMounted(() => {
-  window.addEventListener('load', show)
-})
-onUnmounted(() => {
-  window.removeEventListener('load', show)
-})
+
+setTimeout(() => {
+  show()
+}, 1000)
+// onMounted(() => {
+//   window.addEventListener('load', show)
+// })
+// onUnmounted(() => {
+//   window.removeEventListener('load', show)
+// })
 </script>
 
 <template>
