@@ -22,15 +22,15 @@ const show = () => {
   loaded.value = true
 }
 
-setTimeout(() => {
-  show()
-}, 1000)
-// onMounted(() => {
-//   window.addEventListener('load', show)
-// })
-// onUnmounted(() => {
-//   window.removeEventListener('load', show)
-// })
+// setTimeout(() => {
+//   show()
+// }, 1000)
+onMounted(() => {
+  window.addEventListener('load', show)
+})
+onUnmounted(() => {
+  window.removeEventListener('load', show)
+})
 </script>
 
 <template>
@@ -46,9 +46,9 @@ setTimeout(() => {
         Hacker-C/vue3-terminal</a
       >
       |
-      <a href="https://beian.miit.gov.cn" target="_blank"
-        >湘ICP备 2022004296号</a
-      >
+      <a href="https://beian.miit.gov.cn" target="_blank">
+        湘ICP备 2022004296号
+      </a>
     </footer>
     <TermContainer v-show="isShow" v-if="isOpen" />
   </div>

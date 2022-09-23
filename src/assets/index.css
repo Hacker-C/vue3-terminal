@@ -4,8 +4,7 @@
 
 @layer components {
   .box-container {
-    /* prettier-ignore */
-    @apply w-[80vw] h-[90vh] overflow-hidden rounded-md mx-auto font-['Monaco_Font'] absolute;
+    @apply w-[80vw] h-[90vh] overflow-hidden rounded-md mx-auto absolute font-monaco;
   }
 
   .box-header {
@@ -76,5 +75,5 @@
   src: url('./fonts/Monaco.ttf');
   font-weight: normal;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
