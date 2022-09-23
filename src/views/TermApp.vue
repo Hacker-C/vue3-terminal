@@ -1,13 +1,25 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
-const isOpen = ref(true)
+
+const isShow = ref(true) // show or hide
+const isOpen = ref(true) // close or open
+
+const openApp = () => {
+  isOpen.value = true
+  isShow.value = true
+}
+
+provide(showKey, () => {
+  isShow.value = false
+})
 
 provide(closeKey, () => {
   isOpen.value = false
 })
-const isShow = ref(false)
+
+const loaded = ref(false)
 const show = () => {
-  isShow.value = true
+  loaded.value = true
 }
 onMounted(() => {
   window.addEventListener('load', show)
@@ -18,9 +30,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-show="isShow" class="screen">
+  <div v-show="loaded" class="screen">
     <div class="self-start h-screen ml-2 flex flex-col items-center">
-      <div @click="isOpen = !isOpen" class="flex flex-col items-center">
+      <div @click="openApp" class="flex flex-col items-center">
         <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
         <p class="text-gray-200 mt-1">Vue3 Terminal</p>
       </div>
@@ -34,9 +46,9 @@ onUnmounted(() => {
         >湘ICP备 2022004296号</a
       >
     </footer>
-    <TermContainer v-show="isOpen" />
+    <TermContainer v-show="isShow" v-if="isOpen" />
   </div>
-  <div v-show="!isShow" class="loading-screen">Terminal Loaidng...</div>
+  <div v-show="!loaded" class="loading-screen">Terminal Loaidng...</div>
 </template>
 
 <style scoped>

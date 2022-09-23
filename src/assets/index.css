@@ -5,50 +5,47 @@
 @layer components {
   .box-container {
     /* w-[80%] sm:w-[60%] lg:w-[50%]  */
-    @apply w-[80%] h-[100vh]
-      overflow-hidden
-      rounded-md
-      mx-auto
-      font-['Monaco','Monaco_Font']
-      absolute;
+    /* prettier-ignore */
+    @apply w-[80%] h-[90vh] overflow-hidden rounded-md mx-auto font-['Monaco_Font'] absolute;
   }
+
   .box-header {
-    @apply bg-header h-10 leading-10
-      flex;
+    @apply bg-header h-10 leading-10 flex;
   }
+
   .circle-container {
     @apply flex flex-row justify-around items-center w-20 p-2;
   }
+
   .center-dir-title {
-    @apply flex-1 text-center flex items-center justify-center
-      text-white text-xl;
+    @apply flex-1 text-center flex items-center justify-center text-white text-xl;
   }
+
   .circle {
-    @apply rounded-full h-3 w-3 
-    flex items-center justify-center
-    transition-all duration-200 ease-in-out;
+    @apply rounded-full h-3 w-3 flex items-center justify-center transition-all duration-200 ease-in-out;
   }
+
   .circle-icon {
-    @apply w-3 h-3 hidden
-    transition-all duration-200 ease-in-out;
+    @apply w-3 h-3 hidden transition-all duration-200 ease-in-out;
   }
+
   .box-body {
-    @apply text-white text-lg
-      bg-body h-[90vh] overflow-auto rounded-bl-md rounded-br-md
-      p-5;
+    @apply text-white text-lg bg-body h-screen overflow-auto rounded-bl-md rounded-br-md p-5;
   }
+
   /* 命令输入框 */
   .command-input {
-    @apply bg-body outline-none  w-screen ml-5
-      text-red-600 caret-white border-none pb-1;
+    @apply bg-body outline-none w-screen ml-5 text-red-600 caret-white border-none pb-1;
   }
 }
 
 @layer utilities {
+
   /* 三个功能按钮 */
   .circle-container:hover div {
     @apply w-4 h-4;
   }
+
   .circle-container:hover .circle-icon {
     @apply block;
   }
@@ -58,14 +55,17 @@
     width: 14px;
     height: 20px;
   }
+
   .scrollbar::-webkit-scrollbar-track {
     background: #2c2c2c;
   }
+
   .scrollbar::-webkit-scrollbar-thumb {
     background: gray;
     border-radius: 7px;
     border: 2px solid #2c2c2c;
   }
+
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #9f9f9f;
   }

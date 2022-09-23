@@ -36,10 +36,19 @@ const VDownDrag = {
     })
   }
 }
+
+const termRef = ref<HTMLElement | null>(null)
+
+const flag = ref(false)
+provide(fullScreenKey, () => {
+  flag.value = !flag.value
+  if (flag.value) fullScreen(termRef)
+  else exitFullScreen(termRef)
+})
 </script>
 
 <template>
-  <div class="box-container" v-down-drag>
+  <div class="box-container" v-down-drag ref="termRef">
     <TermHeader />
     <TermBody @mousedown.stop class="cursor-auto opacity-90" />
   </div>
