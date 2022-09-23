@@ -5,7 +5,7 @@
 @layer components {
   .box-container {
     /* prettier-ignore */
-    @apply w-[80vw] overflow-hidden rounded-md mx-auto font-['Monaco_Font'] absolute;
+    @apply w-[80vw] h-[90vh] overflow-hidden rounded-md mx-auto font-['Monaco_Font'] absolute;
   }
 
   .box-header {
@@ -13,7 +13,7 @@
   }
 
   .box-body {
-    @apply text-white text-lg bg-body h-[90%] overflow-auto rounded-bl-md rounded-br-md p-5 pt-0;
+    @apply text-white text-lg bg-body h-[90%] overflow-auto rounded-bl-md rounded-br-md p-5 pt-2;
   }
 
   .circle-container {
