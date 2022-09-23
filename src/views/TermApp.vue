@@ -5,10 +5,20 @@ const isOpen = ref(true)
 provide(closeKey, () => {
   isOpen.value = false
 })
+const isShow = ref(false)
+const show = () => {
+  isShow.value = true
+}
+onMounted(() => {
+  window.addEventListener('load', show)
+})
+onUnmounted(() => {
+  window.removeEventListener('load', show)
+})
 </script>
 
 <template>
-  <div class="screen">
+  <div v-show="isShow" class="screen">
     <div class="self-start h-screen ml-2 flex flex-col items-center">
       <div @click="isOpen = !isOpen" class="flex flex-col items-center">
         <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
@@ -26,6 +36,7 @@ provide(closeKey, () => {
     </footer>
     <TermContainer v-show="isOpen" />
   </div>
+  <div v-show="!isShow" class="loading-screen">Terminal Loaidng...</div>
 </template>
 
 <style scoped>
@@ -34,5 +45,10 @@ provide(closeKey, () => {
       flex flex-col-reverse justify-center items-center
       bg-[url('@/assets/images/bg-macos.jpg')] bg-center bg-cover
       pt-2 font-['-apple-system','Helvetica_Neu','Helvetica','Arial','sans-serif','Microsoft_YaHei'];
+}
+
+.loading-screen {
+  @apply w-screen h-screen bg-black text-white text-xl flex items-center justify-center
+  transition-all;
 }
 </style>

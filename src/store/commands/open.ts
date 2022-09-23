@@ -5,8 +5,12 @@ const go = function (commandStr: string, uri: string) {
     type: 'success'
   })
   setTimeout(() => {
-    window.open(/https{0,1}/.test(uri) ? uri : '//' + uri)
-  }, 500)
+    window.location = (/^https{0,1}/.test(uri) ? uri : `//${uri}`) as (
+      | string
+      | Location
+    ) &
+      Location
+  }, 1000)
 }
 
 export const open = function (commandStr: string) {
