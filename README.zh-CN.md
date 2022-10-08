@@ -12,6 +12,7 @@ Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模
 
 一些已经实现的具有最基本功能的命令：
 
+- `tree` - 将文件和文件夹以树结构展示
 - `echo [message]` - 打印信息
 - `echo [message] > [filename]` - 文件写入
 - `echo [message] >> [filename]` - 文件内容追加

@@ -12,6 +12,7 @@ Onlie: https://term.mphy.me (or: http://terminal.mphy.top)
 
 It has some basic commands below(with the most basic usage):
 
+- `tree` - show the file and folder tree
 - `echo [message]` - print message
 - `echo [message] > [filename]` - write file
 - `echo [message] >> [filename]` - append context to file
