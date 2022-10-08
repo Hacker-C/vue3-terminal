@@ -75,6 +75,7 @@ declare global {
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
   const touch: typeof import('./src/store/commands/touch')['touch']
+  const tree: typeof import('./src/store/commands/tree')['tree']
   const triggerRef: typeof import('vue')['triggerRef']
   const unref: typeof import('vue')['unref']
   const useAddEventListener: typeof import('./src/hooks/useAddEventListener')['default']

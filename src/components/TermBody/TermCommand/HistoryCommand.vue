@@ -38,6 +38,7 @@ if (commandStr === '') {
       </div>
       <TermWelcome v-if="commandStr.split(' ')[0] === 'welcome'" />
       <TermHelp v-else-if="commandStr.split(' ')[0] === 'help'" />
+      <RootTree v-else-if="commandStr.split(' ')[0] === 'tree'" />
     </template>
   </BaseCommand>
 </template>
