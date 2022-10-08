@@ -10,6 +10,8 @@ Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
 Onlie: https://term.mphy.me (or: http://terminal.mphy.top)
 
+![demo](./.github/img/demo.png)
+
 It has some basic commands below(with the most basic usage):
 
 - `tree` - show the file and folder tree

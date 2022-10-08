@@ -19,6 +19,5 @@ declare module '@vue/runtime-core' {
     TermHelp: typeof import('./src/components/common/TermHelp.vue')['default']
     TermMessage: typeof import('./src/components/TermMessage/TermMessage.vue')['default']
     TermWelcome: typeof import('./src/components/common/TermWelcome.vue')['default']
-    Tree: typeof import('./src/components/common/Tree.vue')['default']
   }
 }

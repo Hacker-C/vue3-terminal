@@ -10,6 +10,8 @@ Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模
 
 在线访问: http://terminal.mphy.top
 
+![demo](./.github/img/demo.png)
+
 一些已经实现的具有最基本功能的命令：
 
 - `tree` - 将文件和文件夹以树结构展示
