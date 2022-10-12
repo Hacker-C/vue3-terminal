@@ -4,7 +4,7 @@
 
 @layer components {
   .box-container {
-    @apply w-[80vw] h-[90vh] overflow-hidden rounded-md mx-auto absolute font-monaco;
+    @apply w-[80vw] h-[90vh] overflow-hidden rounded-md mx-auto absolute font-[MonacoFont];
   }
 
   .box-header {
@@ -71,7 +71,7 @@
 
 /* 字体引入 */
 @font-face {
-  font-family: 'Monaco Font';
+  font-family: 'MonacoFont';
   src: url('./fonts/Monaco.ttf');
   font-weight: normal;
   font-style: normal;
