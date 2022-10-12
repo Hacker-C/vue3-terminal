@@ -35,6 +35,15 @@ It has some basic commands below(with the most basic usage):
 
 More commands will be added...
 
+## Future plan...
+
+- `rm` - remove file
+- `rd` - remove directory
+- `j` - jump to a directory
+- `mv` - move file
+- `mkdir` - limit name of directory（`/`）
+- `tree` - optimize the display of file tree
+
 ## Framework and library
 
 - Vue3 + TypeScript + Vite
