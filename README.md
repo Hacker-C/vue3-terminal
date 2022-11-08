@@ -8,7 +8,7 @@ English | <a href='./README.zh-CN.md'>中文</a>
 
 Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
-Onlie: https://term.mphy.me (or: http://terminal.mphy.top)
+Onlie: https://term.mphy.me
 
 ![demo](./.github/img/demo.png)
 

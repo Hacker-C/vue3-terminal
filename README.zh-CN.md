@@ -8,7 +8,7 @@
 
 Vue3-Terminal 是一个基于 Vue3 的迷你终端，和其他类似的前端模拟终端不同，Vue3-Term 基于 *N叉树*，实现了一些基本的 cd、mkdir、pwd、touch、clear 等命令。
 
-在线访问: http://terminal.mphy.top
+在线访问: https://term.mphy.me
 
 ![demo](./.github/img/demo.png)
 
