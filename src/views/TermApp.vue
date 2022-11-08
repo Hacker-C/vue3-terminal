@@ -26,15 +26,6 @@ provide(closeKey, () => {
         <p class="text-gray-200 mt-1">Vue3 Terminal</p>
       </div>
     </div>
-    <footer class="fixed bottom-0 text-gray-300">
-      <a href="https://github.com/Hacker-C/vue3-terminal" target="_blank">
-        Hacker-C/vue3-terminal</a
-      >
-      |
-      <a href="https://beian.miit.gov.cn" target="_blank">
-        湘ICP备 2022004296号
-      </a>
-    </footer>
     <TermContainer v-show="isShow" v-if="isOpen" />
   </div>
 </template>

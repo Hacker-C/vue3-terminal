@@ -10,8 +10,7 @@
       with, more commands will be added soon. <br />
       <br />
       Online:
-      <a href="https://vue3-terminal.vercel.app" class="underline"
-        >https://vue3-terminal.vercel.app</a
+      <a href="https://term.mphy.me" class="underline">https://term.mphy.me</a
       ><br />
       Source:
       <a
