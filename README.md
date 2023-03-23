@@ -6,7 +6,7 @@ English | <a href='./README.zh-CN.md'>中文</a>
 
 ## About
 
-Hello, here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
+Hi! Here is a mini terminal built with Vue3 + TS + Pinia + TailwindCSS!
 
 Onlie: https://term.mphy.me
 
@@ -35,7 +35,7 @@ It has some basic commands below(with the most basic usage):
 
 More commands will be added...
 
-## Future plan...
+## Future plan
 
 - `rm` - remove file
 - `rd` - remove directory
@@ -43,27 +43,16 @@ More commands will be added...
 - `mv` - move file
 - `mkdir` - limit name of directory（`/`）
 - `tree` - optimize the display of file tree
+- Make a visual desktop file system(?)
 
 ## Framework and library
 
 - Vue3 + TypeScript + Vite
 - Pinia
 - TailwindCSS
-- unplugin-auto-import + unplugin-vue-components: for auto inports of api and components
 
 ## Develop
 
-I used [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) and [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components) to auto import api and components, remember to set the code below to `true` to generate `.eslintrc-auto-import.json` when you first run `pnpm dev`: (to make eslint not report errors)
-```ts
-// vite.config.ts, Ln 26, Col 7
-eslintrc: {
-  // default false，when you fisrt `pnpm dev` or need to update, set it to true
-  enabled: true, 
-  filepath: './.eslintrc-auto-import.json'
-}
-```
-
-Then you can start:
 ```bash
 # Install
 pnpm install
@@ -72,9 +61,6 @@ pnpm dev
 # Build
 pnpm build
 ```
-
-> **Warning**
-> every time you create a new command, recommend to create a new module file (format reference to the already finished commands)，after that you should restart the project to make auto-imports works.
 
 ## Descriptiton
 
