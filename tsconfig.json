@@ -3,9 +3,7 @@
   "include": [
     "env.d.ts",
     "src/**/*",
-    "src/**/*.vue",
-    "./auto-imports.d.ts",
-    "./components.d.ts"
+    "src/**/*.vue"
   ],
   "compilerOptions": {
     "baseUrl": ".",
