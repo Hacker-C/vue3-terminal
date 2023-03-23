@@ -1,3 +1,5 @@
+import useDirectoryStore from '../useDirectoryStore'
+
 // clear screen
 export const clearShowCommands = () => {
   const { showCommands } = useDirectoryStore()

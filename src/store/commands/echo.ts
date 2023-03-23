@@ -1,4 +1,6 @@
+import { toRefs } from 'vue'
 import type { File } from '../useDirectoryStore'
+import useDirectoryStore from '../useDirectoryStore'
 
 export const echo = (commandStr: string) => {
   const { setHistoryPath, addShowCommand, splitCommand } = useDirectoryStore()
@@ -11,13 +13,13 @@ export const echo = (commandStr: string) => {
     addShowCommand({
       commandStr,
       type: 'error',
-      description: `echo: illegal arguments`
+      description: 'echo: illegal arguments'
     })
     return
   }
   const re = /[^>^\s]{1,}\s{0,}(>>|>)\s{0,}[^>^\s]{1,}/
   let params = splitCommand(commandStr)[1]
-  if (params.indexOf('>') === -1) {
+  if (!params.includes('>')) {
     // normal echo output
     addShowCommand({
       commandStr,
@@ -33,7 +35,7 @@ export const echo = (commandStr: string) => {
     addShowCommand({
       commandStr,
       type: 'error',
-      description: `echo: illegal arguments`
+      description: 'echo: illegal arguments'
     })
     return
   }
@@ -46,7 +48,7 @@ export const echo = (commandStr: string) => {
   params = params.trim()
   const [text, targetFile] = params.split(/>>|>/)
   // check if the file exists
-  let file = dir.value.files.find((f) => f.name === targetFile.trim())
+  let file = dir.value.files.find(f => f.name === targetFile.trim())
   if (!file) {
     // if the file does not exist, mkdir it
     const newFile = {
@@ -56,13 +58,13 @@ export const echo = (commandStr: string) => {
     }
     dir.value.files.push(newFile)
   }
-  !file && (file = dir.value.files.find((f) => f.name === targetFile.trim()))
-  if (params.indexOf('>>') !== -1) {
+  !file && (file = dir.value.files.find(f => f.name === targetFile.trim()))
+  if (params.includes('>>')) {
     // `echo text >> file`: append text to file
-    ;(<File>file).value += text.trim()
+    (<File>file).value += text.trim()
   } else {
     // `echo text > file`: write text to file
-    ;(<File>file).value = text.trim()
+    (<File>file).value = text.trim()
   }
   addShowCommand({
     commandStr,

@@ -1,4 +1,5 @@
 import type { Ref } from 'vue'
+import useAddEventListener from './useAddEventListener'
 
 export default function (el: Ref<HTMLElement | null>) {
   useAddEventListener(document, 'keydown', () => {
@@ -6,5 +7,4 @@ export default function (el: Ref<HTMLElement | null>) {
       el.value.focus()
     }
   })
-  ref()
 }

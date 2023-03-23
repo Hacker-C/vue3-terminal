@@ -1,3 +1,5 @@
+import useDirectoryStore from '../useDirectoryStore'
+
 const go = function (commandStr: string, uri: string) {
   const { addShowCommand } = useDirectoryStore()
   addShowCommand({
@@ -9,7 +11,7 @@ const go = function (commandStr: string, uri: string) {
       | string
       | Location
     ) &
-      Location
+    Location
   }, 1000)
 }
 
@@ -24,14 +26,14 @@ export const google = function (commandStr: string) {
   const { setHistoryPath, splitCommand } = useDirectoryStore()
   const keywords = splitCommand(commandStr)[1]
   setHistoryPath()
-  go(commandStr, 'www.google.com/search?q=' + keywords)
+  go(commandStr, `www.google.com/search?q=${keywords}`)
 }
 
 export const baidu = function (commandStr: string) {
   const { setHistoryPath, splitCommand } = useDirectoryStore()
   const keywords = splitCommand(commandStr)[1]
   setHistoryPath()
-  go(commandStr, 'www.baidu.com/s?wd=' + keywords)
+  go(commandStr, `www.baidu.com/s?wd=${keywords}`)
 }
 
 export const github = function () {

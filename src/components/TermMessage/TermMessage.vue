@@ -4,6 +4,8 @@ interface TermMessageProps {
   showTime?: boolean
 }
 
+const { showTime = true } = defineProps<TermMessageProps>()
+
 const MessageToColor = {
   info: 'bg-blue-600',
   success: 'bg-green-600',
@@ -11,8 +13,6 @@ const MessageToColor = {
   error: 'bg-red-700'
 }
 
-// eslint-disable-next-line vue/no-setup-props-destructure
-const { showTime = true } = defineProps<TermMessageProps>()
 const getTime = () => new Date().toLocaleTimeString()
 </script>
 

@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import { provide, ref } from 'vue'
+import TermContainer from './TermContainer.vue'
+import { closeKey, showKey } from '@/utils/provide-inject_keys'
 
 const isShow = ref(true) // show or hide
 const isOpen = ref(true) // close or open
@@ -21,9 +24,11 @@ provide(closeKey, () => {
 <template>
   <div class="screen bg-color">
     <div class="self-start h-screen ml-2 flex flex-col items-center">
-      <div @click="openApp" class="flex flex-col items-center">
+      <div class="flex flex-col items-center" @click="openApp">
         <Icon class="w-14 h-14 bg-gray-300" icon="oi:terminal" />
-        <p class="text-gray-200 mt-1">Vue3 Terminal</p>
+        <p class="text-gray-200 mt-1">
+          Vue3 Terminal
+        </p>
       </div>
     </div>
     <TermContainer v-show="isShow" v-if="isOpen" />

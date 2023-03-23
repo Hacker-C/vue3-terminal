@@ -1,3 +1,5 @@
+import useDirectoryStore from '../useDirectoryStore'
+
 // 模拟 welcome
 export const welcome = (commandStr: string) => {
   const { setHistoryPath, addShowCommand } = useDirectoryStore()

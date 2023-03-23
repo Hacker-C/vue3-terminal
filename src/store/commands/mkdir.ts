@@ -1,3 +1,6 @@
+import { storeToRefs } from 'pinia'
+import useDirectoryStore from '../useDirectoryStore'
+
 // mkdir dirName
 export const mkdir = (commandStr: string) => {
   const { setHistoryPath, addShowCommand } = useDirectoryStore()
@@ -6,7 +9,7 @@ export const mkdir = (commandStr: string) => {
   // only get the first file directory parameter
   const dirName = commandStr.split(' ')[1]
   const targetDirIndex = dir.value.directories.findIndex(
-    (curDir) => curDir.name === dirName
+    curDir => curDir.name === dirName
   )
   if (targetDirIndex !== -1) {
     // if the directory already exists, operation failed

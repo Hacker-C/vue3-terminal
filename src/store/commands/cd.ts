@@ -1,4 +1,14 @@
+import { toRefs } from 'vue'
 import type { Directory } from '../useDirectoryStore'
+import useDirectoryStore from '../useDirectoryStore'
+
+// cd ..
+export const cdBack = () => {
+  const { dir } = toRefs(useDirectoryStore())
+  if (dir.value.previous) {
+    dir.value = dir.value.previous as Directory
+  }
+}
 
 // cd dir
 export const cd = (commandStr: string) => {
@@ -9,17 +19,17 @@ export const cd = (commandStr: string) => {
   if (dirname === '..') {
     // cd ..
     cdBack()
-    return void addShowCommand({
+    return addShowCommand({
       commandStr,
       type: 'success'
     })
   }
   const targetDirIndex = dir.value.directories.findIndex(
-    (curDir) => curDir.name === dirname
+    curDir => curDir.name === dirname
   )
   if (targetDirIndex === -1) {
     // fail
-    return void addShowCommand({
+    return addShowCommand({
       commandStr,
       type: 'warning',
       description: 'directory not found'
@@ -31,12 +41,4 @@ export const cd = (commandStr: string) => {
     commandStr,
     type: 'success'
   })
-}
-
-// cd ..
-export const cdBack = () => {
-  const { dir } = toRefs(useDirectoryStore())
-  if (dir.value.previous) {
-    dir.value = dir.value.previous as Directory
-  }
 }

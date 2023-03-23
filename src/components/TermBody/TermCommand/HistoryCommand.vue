@@ -1,9 +1,15 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+import BaseCommand from './BaseCommand.vue'
 import type { Command } from '@/store/useDirectoryStore'
+import useDirectoryStore from '@/store/useDirectoryStore'
+import TermMessage from '@/components/TermMessage/TermMessage.vue'
+import TermWelcome from '@/components/common/TermWelcome.vue'
+import TermHelp from '@/components/common/TermHelp.vue'
+import RootTree from '@/components/common/FolderTree/RootTree.vue'
 
 const { historyPath, showCommands, filesAndDirectories } = useDirectoryStore()
-const { commandStr, isValid, type, description } =
-  showCommands[showCommands.length - 1]
+const { commandStr, isValid, type, description } = showCommands[showCommands.length - 1]
 
 const [files, directories] = filesAndDirectories()
 
@@ -28,7 +34,9 @@ if (commandStr === '') {
       </div>
     </template>
     <template #show-area>
-      <TermMessage v-if="isMessageShow" :type="type">{{ type }}</TermMessage>
+      <TermMessage v-if="isMessageShow" :type="type">
+        {{ type }}
+      </TermMessage>
       <div v-if="commandStr === 'ls'" class="break-words">
         <span>{{ files }}</span>
         <span class="text-green-500">{{ directories }}</span>

@@ -1,4 +1,6 @@
-export default function useEventListener(
+import { onMounted, onUnmounted } from 'vue'
+
+export default function useAddEventListener(
   target: EventTarget,
   event: keyof DocumentEventMap,
   callback: EventListener

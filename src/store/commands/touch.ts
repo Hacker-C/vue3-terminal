@@ -1,3 +1,6 @@
+import { storeToRefs } from 'pinia'
+import useDirectoryStore from '../useDirectoryStore'
+
 // touch fileName
 export const touch = (commandStr: string) => {
   const { setHistoryPath, addShowCommand } = useDirectoryStore()
@@ -6,7 +9,7 @@ export const touch = (commandStr: string) => {
   // only get the first file name
   const fileName = commandStr.split(' ')[1]
   const targetFileIndex = dir.value.files.findIndex(
-    (file) => file.name === fileName
+    file => file.name === fileName
   )
   if (targetFileIndex !== -1) {
     // if the file already exists, operation failed

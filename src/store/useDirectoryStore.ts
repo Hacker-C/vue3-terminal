@@ -1,3 +1,19 @@
+import { defineStore } from 'pinia'
+import { computed, ref } from 'vue'
+import { cat } from './commands/cat'
+import { cd, cdBack } from './commands/cd'
+import { clearShowCommands } from './commands/clear'
+import { echo } from './commands/echo'
+import { help } from './commands/help'
+import { filesAndDirectories, ls } from './commands/ls'
+import { mkdir } from './commands/mkdir'
+import { baidu, github, google } from './commands/open'
+import { pwd } from './commands/pwd'
+import { rm } from './commands/rm'
+import { touch } from './commands/touch'
+import { tree } from './commands/tree'
+import { welcome } from './commands/welcome'
+
 // the structure of file
 export interface File {
   name: string
@@ -67,7 +83,7 @@ const useDirectoryStore = defineStore('directory', () => {
     let path = dir.value.name
     let temp = dir.value.previous
     while (temp) {
-      path = (temp.name === '/' ? '' : temp.name) + '/' + path
+      path = `${temp.name === '/' ? '' : temp.name}/${path}`
       temp = temp.previous
     }
     return path

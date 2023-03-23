@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { provide, ref } from 'vue'
+import { fullScreenKey } from '@/utils/provide-inject_keys'
+import { exitFullScreen, fullScreen } from '@/hooks/useFullScreen'
+import TermHeader from '@/components/TermHeader/TermHeader.vue'
+import TermBody from '@/components/TermBody/TermBody.vue'
+
 const VDownDrag = {
   mounted: (el: HTMLElement) => {
     let [x, y, startX, startY, moveX, moveY] = Array(6).fill(0) as number[]
@@ -48,8 +54,8 @@ provide(fullScreenKey, () => {
 </script>
 
 <template>
-  <div class="box-container" v-down-drag ref="termRef">
+  <div ref="termRef" v-down-drag class="box-container">
     <TermHeader />
-    <TermBody @mousedown.stop class="cursor-auto opacity-90" />
+    <TermBody class="cursor-auto opacity-90" @mousedown.stop />
   </div>
 </template>
