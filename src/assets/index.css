@@ -12,7 +12,7 @@
   }
 
   .box-body {
-    @apply text-white text-lg bg-body h-[90%] overflow-auto rounded-bl-md rounded-br-md p-5 pt-2;
+    @apply text-white text-[17px] bg-body h-[90%] overflow-auto rounded-bl-md rounded-br-md p-5 pt-2;
   }
 
   .circle-container {

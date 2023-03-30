@@ -34,7 +34,7 @@ const toggle = inject<() => void>(fullScreenKey)
     </div>
     <div class="center-dir-title">
       <Icon icon="ant-design:folder-filled" class="text-[#57c5ff]" />
-      <span class="ml-2 select-none">{{ currentDirName }}</span>
+      <span class="ml-2 select-none text-lg">{{ currentDirName }}</span>
     </div>
     <div class="circle-container" />
   </header>
