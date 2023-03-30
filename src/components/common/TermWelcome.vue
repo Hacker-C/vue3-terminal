@@ -1,5 +1,3 @@
-<script setup lang="ts"></script>
-
 <template>
   <div>
     <h2>Hello, here is a mini terminal built with vue3!</h2>

@@ -2,7 +2,7 @@
 import { provide, ref } from 'vue'
 import { fullScreenKey } from '@/utils/provide-inject_keys'
 import { exitFullScreen, fullScreen } from '@/hooks/useFullScreen'
-import TermHeader from '@/components/TermHeader/TermHeader.vue'
+import TermHeader from '@/components/TermHeader.vue'
 import TermBody from '@/components/TermBody/TermBody.vue'
 
 const VDownDrag = {

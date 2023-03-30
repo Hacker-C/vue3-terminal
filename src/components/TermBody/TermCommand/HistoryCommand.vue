@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import BaseCommand from './BaseCommand.vue'
 import type { Command } from '@/store/useDirectoryStore'
 import useDirectoryStore from '@/store/useDirectoryStore'
-import TermMessage from '@/components/TermMessage/TermMessage.vue'
+import TermMessage from '@/components/TermMessage.vue'
 import TermWelcome from '@/components/common/TermWelcome.vue'
 import TermHelp from '@/components/common/TermHelp.vue'
-import RootTree from '@/components/common/FolderTree/RootTree.vue'
+import RootTree from '@/components/FolderTree/RootTree.vue'
 
 const { historyPath, showCommands, filesAndDirectories } = useDirectoryStore()
 const { commandStr, isValid, type, description } = showCommands[showCommands.length - 1]

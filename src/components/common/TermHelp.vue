@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TermMessage from '@/components/TermMessage.vue'
 import useDirectoryStore from '@/store/useDirectoryStore'
 
 const { commandHelp } = useDirectoryStore()
