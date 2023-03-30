@@ -72,7 +72,7 @@
 /* 字体引入 */
 @font-face {
   font-family: 'MonacoFont';
-  src: url('./fonts/Monaco.ttf');
+  src: url('../assets//fonts/Monaco.ttf');
   font-weight: normal;
   font-style: normal;
   font-display: block;
