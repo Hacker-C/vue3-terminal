@@ -56,6 +56,6 @@ provide(fullScreenKey, () => {
 <template>
   <div ref="termRef" v-down-drag class="box-container">
     <TermHeader />
-    <TermBody class="cursor-auto opacity-90" @mousedown.stop />
+    <TermBody class="cursor-auto opacity-90" />
   </div>
 </template>
