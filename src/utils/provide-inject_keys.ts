@@ -1,6 +1,6 @@
 import type { InjectionKey } from 'vue'
 
-// temprarily close the key
+// temporarily close the key
 export const showKey = Symbol('showKey') as InjectionKey<() => void>
 
 // toggle full screen

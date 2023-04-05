@@ -43,8 +43,8 @@ function initDir(): Directory {
     id: 0,
     name: '/',
     files: [
-      { name: 'file1.txt', value: '哈哈哈' },
-      { name: 'file2.txt', value: '嘻嘻嘻' }
+      { name: 'file1.txt', value: 'hello, just some text' },
+      { name: 'file2.txt', value: 'hello, just some text' }
     ],
     previous: null,
     directories: []
@@ -89,8 +89,18 @@ const useDirectoryStore = defineStore('directory', () => {
     return path
   })
 
+  // reset the dir
+  const reset = () => {
+    dir.value = {
+      id: 0,
+      name: '/',
+      files: [],
+      previous: null,
+      directories: []
+    }
+  }
+
   // valid commands(finished commands)
-  // prettier-ignore
   const ValidCommands = ['cd', 'ls', 'pwd', 'clear', 'mkdir', 'touch', 'welcome', 'help', 'echo', 'cat', 'open', 'google', 'baidu', 'github', 'rm', 'tree']
   const commandDescription = [
     'cd [dirname] - change directory',
@@ -153,6 +163,7 @@ const useDirectoryStore = defineStore('directory', () => {
 
   return {
     dir,
+    reset,
     cd,
     cdBack,
     currentDirName,

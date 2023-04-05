@@ -3,6 +3,8 @@ import { Icon } from '@iconify/vue'
 import { provide, ref } from 'vue'
 import TermContainer from './TermContainer.vue'
 import { closeKey, showKey } from '@/utils/provide-inject_keys'
+import useDirectoryStore from '@/store/useDirectoryStore'
+const { reset, showCommands } = useDirectoryStore()
 
 const isShow = ref(true) // show or hide
 const isOpen = ref(true) // close or open
@@ -16,8 +18,11 @@ provide(showKey, () => {
   isShow.value = false
 })
 
+// TODO reset the state
 provide(closeKey, () => {
   isOpen.value = false
+  reset()
+  showCommands.length = 0
 })
 </script>
 

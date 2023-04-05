@@ -7,7 +7,7 @@ import { closeKey, fullScreenKey, showKey } from '@/utils/provide-inject_keys'
 
 const { currentDirName } = storeToRefs(useDirectoryStore())
 
-// close TermApp, distroy the component
+// close TermApp, destroy the component, reset the dir state
 // TODO init whole state
 const close = inject<() => void>(closeKey)
 
