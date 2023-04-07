@@ -38,6 +38,7 @@ defineProps<{
     <!-- all folders -->
     <FolderTree
       v-for="child in folder.directories"
+      v-once
       :key="child.id"
       :folder="child"
       :index="index"
